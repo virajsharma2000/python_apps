@@ -23,8 +23,8 @@ def HttpClient(address = str) -> None:
     r = s.get(address)
     print(r)
 def twiliocall(fromphoneno = str,tophoneno = str,twiml = str) -> None:
-    account_sid = "AC11f70a163b9dd8fa836507c6a44060d8"
-    auth_token = "fdd0629087157ece850eeadd8c528df4"
+    account_sid = "{account_sid}"
+    auth_token = "_auth_token_"
     twilio = Client(account_sid, auth_token)
     call = twilio.calls.create(
     from_ = fromphoneno,
