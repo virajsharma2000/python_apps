@@ -6,7 +6,7 @@ import maps
 
 maps.createmap(
 
-               # my google map
+               # title of map named my google map
     
 
               'my Google map',
