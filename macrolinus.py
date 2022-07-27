@@ -6,10 +6,11 @@ print('CREATED BY -> "THE BEST PYTHON PROGRAMMER"')
 
 print('\n')
 
-currentdate = time.strftime('%B,%A %Y')
+currentdate = time.strftime('%B - %D - %A  - %Y')
 print(currentdate)
 
 def macrolinus():
+ 
  while True:
     print('1 app.calculator')
     print('2 app.python3')
@@ -82,6 +83,8 @@ def macrolinus():
         print('this os is created using python language')
         print('it ends app automatically')
         print('when you see a litttle bit enter that means the app has ended')
+        print('and when os asks for username you need to enter your name')
+        print('this os does not need setup of username and password it has a 1 unique username and 2 unique password')
         print('\n')
 
     if app == 'battery':
@@ -90,11 +93,12 @@ def macrolinus():
         print('\n')
         
 
+username = input("username: ")
+password = input('password: ')
 
-password = input('Enter your password: ')
-
-if password == 'pumpulili' or password == 'putchi':
-    macrolinus()
+if password == 'pumpulili' or password == 'putchi' and username == 'viraj':
+    print('\n')
+    macrolinus(username)
     
 else:
-    print('wrong password')
+    print('wrong password or username')
