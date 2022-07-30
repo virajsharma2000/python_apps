@@ -1,7 +1,6 @@
 # importing impirtant libarys to create our new python computer virus
 
 import glob
-import platform
 import os
 
 # finding files which we want to infect
