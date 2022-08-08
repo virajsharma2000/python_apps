@@ -80,10 +80,6 @@ def get_astrological_sign(day,month):
             return 'Sagittarius'
 
 
-def get_day_prediction(day,month,day_to_predict):
-    return pyaztro.Aztro(sign = astrological_sign(day,month),day = day_to_predict).description
-
-
 def get_symbol_of_sunsign(sunsign):
     if sunsign == 'Capricorn':
         return 'Goat'
