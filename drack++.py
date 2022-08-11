@@ -144,14 +144,7 @@ def delete_all_text():
 
 # creating function called python
 
-def python():
-    # taking varible called text
-    
-    global text
 
-    # executing the python code from varible called text
-
-    exec(text.get('1.0','end-1c'))
 
 
 
