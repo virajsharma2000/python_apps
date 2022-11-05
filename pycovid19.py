@@ -17,7 +17,7 @@ class covid_data:
             raise Exception(error_response)
 
     def cases(self):
-        return self.response['Success']['active']
+        return self.response['Success']['cases']
 
     def todayCases(self):
         return self.response['Success']['todayCases']
