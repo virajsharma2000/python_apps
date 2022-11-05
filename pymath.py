@@ -20,7 +20,7 @@ def get_half(number):
     return int(number / 2)
 
 def get_power(number):
-    return int(number * number)
+    return int(number ** number)
 
 class Calculations:
     def __init__(self,number1,number2):
