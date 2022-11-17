@@ -7,3 +7,12 @@ age INT,
 description TEXT,
 PRIMARY KEY(member_id)
 );
+
+CREATE TABLE expenses(
+expense_id int NOT NULL AUTO_INCREMENT,
+expense_name VARCHAR(255),
+expense_description TEXT,
+created_datetime datetime,
+amount FLOAT,
+PRIMARY KEY(expense_id)
+);
