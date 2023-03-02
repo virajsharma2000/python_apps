@@ -1,15 +1,15 @@
 this repositry have python mini app.I created them for fun because hobby coding is my hobby from 2021.
 
-date.py - print date time
-day_part_teller.py - application using python that tells that it's morning,afternoon,eveni…
-ddos.py
-di.py
-digitalclock.py
-drack++.py
-drinkorder.py - my drink ordering app created by me using python
-duaio.py
-filecontroler.py
-flashMin.py
+date.py - print date time\
+day_part_teller.py - application using python that tells that it's morning,afternoon,eveni…\
+ddos.py\
+di.py\
+digitalclock.py\
+drack++.py\
+drinkorder.py - my drink ordering app created by me using python\
+duaio.py\
+filecontroler.py\
+flashMin.py\
 gui.py
 india_personal_bank_apies.py - my bank in python
 kalpana.py
