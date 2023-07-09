@@ -22,12 +22,12 @@ def flip(event):
     head_or_tails = random.choice(head_and_tails)
 
     if head_or_tails == player1_choice:
-        popup = Popup(title = 'coinflip-1',content = Label(text = 'player1 wins {}'.format(head_or_tails)),size_hint = (.700,.200))
+        popup = Popup(title = 'coinflip',content = Label(text = 'player1 wins {}'.format(head_or_tails)),size_hint = (.700,.200))
 
         popup.open()
 
     if head_or_tails == player2_choice:
-        popup = Popup(title = 'coinflip-2',content = Label(text = 'player2 wins {}'.format(head_or_tails)),size_hint = (.700,.200))
+        popup = Popup(title = 'coinflip',content = Label(text = 'player2 wins {}'.format(head_or_tails)),size_hint = (.700,.200))
 
         popup.open()
         
