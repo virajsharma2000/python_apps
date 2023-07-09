@@ -44,6 +44,7 @@ user.py\
 week_day_date_finder.py - adding my app to find day of week day\
 whatsapp.py\
 world_clock.py  - my world clock built using python\
+coinflip.py - my first mobile python app using kivy framework
 
 
 
