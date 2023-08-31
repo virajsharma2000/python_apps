@@ -62,7 +62,9 @@ if __name__ == 'pyalgebra':
         return x_value
 
     if y == 0:
-        y_value = x / z
+        y_value = z / x
+        
+        return y_value
 
     if x != 0 and y != 0:
         raise TypeError('You can only fill x number or y number,you cannot fill both x and y')
