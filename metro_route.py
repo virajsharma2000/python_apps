@@ -15,7 +15,7 @@ def get_metro_route(source,destination):
     metro_route += metro_station
 
    else:
-    metro_route += metro_station + '->'
+    metro_route += metro_station + '<-'
 
    array_index -= 1
 
