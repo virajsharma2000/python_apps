@@ -1,5 +1,4 @@
 import requests
-import random
 
 def get_metro_route(source,destination):
  route = ''
@@ -57,7 +56,7 @@ def get_time(source,destination):
 
  json = response.json()
 
- time = int(json['time'])
+ time = json['time']
 
  return time
 
@@ -66,12 +65,17 @@ def get_distance(source,destination):
 
  json = response.json()
 
- distance = 45 * int(json['time']) / 60
+ distance = 45 * json['time'] / 60
 
  return distance
 
- 
-want_to_do = input('do you want to get station list or get metro route or get time or get distance: ')
+def get_fare(source,destination):
+ fare = get_distance(source,destination) * 2
+
+ return fare
+
+
+want_to_do = input('do you want to get station list or get metro route or get time or get distance or get fare: ')
 
 if want_to_do == 'get time':
  source_metro_station = input('Enter onboarding metro station: ')
@@ -105,4 +109,11 @@ if want_to_do == 'get distance':
  distance = get_distance(source,destination)
 
  print(distance,'km')
- 
+
+if want_to_do == 'get fare':
+ source = input('Enter source metro station: ')
+ destination = input('Enter destination metro station: ')
+
+ fare = get_fare(source,destination)
+
+ print(fare,'₹')
