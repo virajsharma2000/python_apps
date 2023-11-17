@@ -13,7 +13,7 @@ with st.sidebar:
         ("Standard (5-15 days)", "Express (2-5 days)")
     )
 
-st.title("this is my strealit test")
+st.title("Hello I am viraj")
 
-title = st.text_input('Movie title', 'Life of Brian')
-st.write('The current movie title is', title)
+title = st.text_input('What do you like about me?', 'viraj is good python programmer')
+st.write('I like viraj because', title)
