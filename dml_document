@@ -1,0 +1,19 @@
+DML or drawing markup language created by viraj sharma is a markup language to draw things with staright lines.The tag details are given below:
+
+1 - forward tag
+forward tag makes line go front and it asks for unit to makes line move front in units
+2 - backward tag
+backward tag makes line go back and it asks for unit to makes line move front in units
+3 - left tag
+left tag makes line go left and it asks for degree for line angle
+4 - right tag
+right tag makes line go right and it asks for degree for line angle
+
+syntaxes are given below:
+
+1 - forward tag - <forward>units</forward>
+2 - backward tag - <backward>units</backward>
+3 - left tag - <left>degree</left>
+4 - right tag - <right>degree</right>
+
+
