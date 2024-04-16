@@ -49,7 +49,7 @@ def is_it_triangle(x,y,z):
 
  return is_it_triangle
 
-# finds the base raised to a given power and power value
+# finds the base raised to a given power 
 def base(exponent,value):
  base = 0
  number = 0
@@ -240,6 +240,42 @@ def percentage(consumption,total):
  percentage = consumption / total * 100
 
  return percentage
+
+# convertes km to meter
+def km_to_meter(km):
+ meter = float(km * 1000)
+
+ return meter
+
+# convertes meter to km
+def meter_to_km(meter):
+ km = meter / 1000
+
+ return km
+
+# convertes meter to cm
+def meter_to_cm(meter):
+ cm = float(meter * 100)
+
+ return cm
+
+# convertes cm to meter
+def cm_to_meter(cm):
+ meter = cm / 100
+
+ return meter
+
+# convertes cm to mm
+def cm_to_mm(cm):
+ mm = float(cm * 10)
+
+ return mm
+
+# convertes mm to cm
+def mm_to_cm(mm):
+ cm = mm / 10
+
+ return cm
 
 
    
