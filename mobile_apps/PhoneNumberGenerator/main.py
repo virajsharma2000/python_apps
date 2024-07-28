@@ -6,42 +6,61 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
+from kivy.uix.gridlayout import GridLayout 
 
 import random
 
-
-phone_numbers = ''
-
 def generate_phone_numbers(phone_number,how_many_phone_numbers):
-         global phone_numbers
+        if len(phone_number) == 10:
+         if phone_number.startswith('9') or phone_number.startswith('8') or phone_number.startswith('7'):
+          phone_numbers = ''
 
-         try:
-          if len(phone_number) == 8 or len(phone_number) == 10:
-           int(phone_number)
+          for i in range(int(how_many_phone_numbers)):
+           numbers = list(phone_number[1:11])
+
+           random.shuffle(numbers)
+
+           numbers.insert(0,phone_number[0])
+           
+           for num in numbers:
+            phone_numbers += num
+
+           phone_numbers += '\n'
+
+          layout = GridLayout(cols = 1, padding = 10)
+          
+          layout.add_widget(Label(text = phone_numbers))
+          
+          popup = Popup(title = 'PhoneNumberGenerator', 
+                      content = layout, 
+                      size_hint =(None, None), size =(1000, 1000))
+          
+          popup.open()
+
+         else:
+          layout = GridLayout(cols = 1, padding = 10)
          
-           numbers = []
-
-           for nums in phone_number:
-            numbers.append(nums)
+          layout.add_widget(Label(text = 'your phone number is not starting with 9 or 8 or 7'))
          
-           for i in range(int(how_many_phone_numbers)):
-            phone_num = ''
-
-            for x in range(len(phone_number)):
-             num = random.choice(numbers)
-
-             phone_num += num
-
-
-            phone_numbers += phone_num + '\n'     
-
-           Popup(title = 'PhoneNumberGenerator',content = Label(text = phone_numbers)).open()
-
-           phone_numbers = ''
- 
-         except ValueError:
-           pass
+          popup = Popup(title = 'PhoneNumberGenerator', 
+                      content = layout, 
+                      size_hint =(None, None), size =(1000, 1000))
          
+          popup.open()    
+          
+          
+        else:
+         layout = GridLayout(cols = 1, padding = 10)
+         
+         layout.add_widget(Label(text = 'your phone number does not have 10 digits'))
+         
+         popup = Popup(title = 'PhoneNumberGenerator', 
+                      content = layout, 
+                      size_hint =(None, None), size =(1000, 1000))
+         
+         popup.open()    
+          
+          
 class PhoneNumbersGeneratorApp(App):
     def build(self):
         boxlayout = BoxLayout(orientation = 'vertical')
