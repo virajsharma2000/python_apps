@@ -47,7 +47,7 @@ requirements = python3,kivy
 #presplash.filename = %(source.dir)s/data/presplash.png
 
 # (str) Icon of the application
-icon.filename = /home/viraj/phonenumber_icon.jpg
+icon.filename = /home/viraj/viraj_src/PhoneNumberGenerator/icon/phone_icon.jpg
 
 # (list) Supported orientations
 # Valid options are: landscape, portrait, portrait-reverse or landscape-reverse
