@@ -3,7 +3,7 @@ import cvlib
 
 samosa_per_person = int(input('Enter how many samosa one person should get: '))
 
-camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(2)
 
 while True:
  if camera.isOpened():
