@@ -9,7 +9,7 @@ class TestCases:
   self.__total_testcases += 1
 
   if not self.__function(*args) == result:
-   self.__faild_testcases_list.append({'result':result, 'arguments':args})
+   self.__faild_testcases_list.append({'expected':result, 'arguments':args})
 
   else:
    self.__testcases_passed += 1
