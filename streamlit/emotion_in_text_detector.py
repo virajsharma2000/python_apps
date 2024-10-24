@@ -1,9 +1,9 @@
 import requests
 
 def detect_emotion(text):
-  prompt = 'can you get emotion in the text given below' + '\n' + text
+  prompt = 'can you get emotion in the text given below, do not give me explaination, just name of emotion in single word' + '\n' + text
   
-  myobj = {"contents":[{"parts":[{"text":prompt}]}], 'temperature':0}
+  myobj = {"contents":[{"parts":[{"text":prompt}]}]}
 
   questions_and_answers = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyD1wjkjcVvOTqKHQdOuR-3NxhefycJrPAA', json = myobj) 
 
