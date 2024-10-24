@@ -5,8 +5,7 @@ def detect_emotion(text):
   
   myobj = {"contents":[{"parts":[{"text":prompt}]}]}
 
-  questions_and_answers = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyD1wjkjcVvOTqKHQdOuR-3NxhefycJrPAA', json = myobj) 
+  response = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyD1wjkjcVvOTqKHQdOuR-3NxhefycJrPAA', json = myobj) 
 
-  return questions_and_answers.json()['candidates'][0]['content']['parts'][0]['text']
-
+  return response.json()['candidates'][0]['content']['parts'][0]['text']
 
