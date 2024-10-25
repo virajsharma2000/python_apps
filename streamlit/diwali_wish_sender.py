@@ -1,5 +1,7 @@
 import requests
-import pywhatkit
+import webbrowser
+import pyautogui
+import time
 
 def generate_diwali_wish(single_person_or_group):
  prompt = 'create a joyfull and reflecting diwali wish for a ' + single_person_or_group
@@ -17,17 +19,22 @@ def send_diwali_wish(phone_number_or_group_id):
  if phone_number_or_group_id.isdigit() and len(phone_number_or_group_id) == 10:
   if phone_number_or_group_id.startswith('9') or phone_number_or_group_id.startswith('8') or phone_number_or_group_id.startswith('7'):
    diwali_wish = generate_diwali_wish('single person')
-   
-   pywhatkit.sendwhatmsg_instantly('+91' + phone_number_or_group_id, diwali_wish)
 
+   webbrowser.open('https://web.whatsapp.com/send?phone={}&text={}'.format(phone_number_or_group_id, diwali_wish))
+   time.sleep(10)
+   pyautogui.press('Enter')
+   
   else:
    diwali_wish = generate_diwali_wish('group')
 
-   pywhatkit.sendwhatmsg_to_group_instantly(phone_number_or_group_id, diwali_wish)
-
+   webbrowser.open('https://web.whatsapp.com/send?phone={}&text={}'.format(phone_number_or_group_id, diwali_wish))
+   time.sleep(10)
+   pyautogui.press('Enter')
+   
  else:
   diwali_wish = generate_diwali_wish('group')
 
-  pywhatkit.sendwhatmsg_to_group_instantly(phone_number_or_group_id, diwali_wish)
-
-
+  webbrowser.open('https://web.whatsapp.com/send?phone={}&text={}'.format(phone_number_or_group_id, diwali_wish))
+  time.sleep(10)
+  pyautogui.press('Enter')
+   
