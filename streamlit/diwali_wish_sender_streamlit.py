@@ -1,7 +1,7 @@
 import streamlit as st
 import diwali_wish_generator
 
-phone_number_or_group_id = st.text_input('Enter phone number or group id')
+phone_number_or_group_id = st.text_input('Enter phone number')
 button = st.button('Generate and Send Diwali Wish')
 
 if button:
