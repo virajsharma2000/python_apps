@@ -1,9 +1,9 @@
 import requests
 import webbrowser
 
-def generate_diwali_wish(single_person_or_group):
- prompt = 'create a joyfull and reflecting diwali wish for a ' + single_person_or_group
-
+def generate_diwali_wish():
+ prompt = 'create a joyfull and reflecting diwali wish for a single person'
+ 
  myobj = {"contents":[{"parts":[{"text":prompt}]}]}
 
  response = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyD1wjkjcVvOTqKHQdOuR-3NxhefycJrPAA', json = myobj)
