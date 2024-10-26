@@ -1,11 +1,65 @@
 import streamlit as st
-import diwali_wish_sender
+import diwali_wish_generator
 
-st.write('<h1>my streamlit app to send diwali wish by enterting a phone number of group name, it uses a simple module created by me called diwali_wish_sender</h1>', unsafe_allow_html = True)
 
-phone_number_or_gruop_id = st.text_input('Enter phone number or group id')
-button = st.button('Send Diwali Wish')
+phone_number_or_group_id = st.text_input('Enter phone number or group id')
+button = st.button('Generate and Send Diwali Wish')
 
 if button:
- diwali_wish_sender.send_diwali_wish(phone_number_or_gruop_id)
+ if phone_number_or_group_id.isdigit() and len(phone_number_or_group_id) == 10:
+  if phone_number_or_group_id.startswith('9') or phone_number_or_group_id.startswith('9') or phone_number_or_group_id.startswith('9'):
+   diwali_wish = diwali_wish_generator.generate_diwali_wish('single person')
 
+   st.write(diwali_wish)
+
+   diwali_wish_in_url_text = ''
+
+   for charecter in diwali_wish:
+    if charecter == ' ':
+     diwali_wish_in_url_text += '%20'
+
+    elif charecter == '\n':
+     diwali_wish_in_url_text += '%0A'
+
+    else:
+     diwali_wish_in_url_text += charecter
+    
+   st.write('<a href = "https://web.whatsapp.com/send?phone={}&text={}">Send Diwali Wish</a>'.format(phone_number_or_group_id, diwali_wish_in_url_text), unsafe_allow_html = True)
+
+  else:
+   diwali_wish = diwali_wish_generator.generate_diwali_wish('group')
+
+   st.write(diwali_wish)
+
+   diwali_wish_in_url_text = ''
+
+   for charecter in diwali_wish:
+    if charecter == ' ':
+     diwali_wish_in_url_text += '%20'
+
+    elif charecter == '\n':
+     diwali_wish_in_url_text += '%0A'
+
+    else:
+     diwali_wish_in_url_text += charecter
+    
+   st.write('<a href = "https://web.whatsapp.com/send?phone={}&text={}">Send Diwali Wish</a>'.format(phone_number_or_group_id, diwali_wish_in_url_text), unsafe_allow_html = True)
+
+ else:
+   diwali_wish = diwali_wish_generator.generate_diwali_wish('group')
+
+   st.write(diwali_wish)
+
+   diwali_wish_in_url_text = ''
+
+   for charecter in diwali_wish:
+    if charecter == ' ':
+     diwali_wish_in_url_text += '%20'
+
+    elif charecter == '\n':
+     diwali_wish_in_url_text += '%0A'
+
+    else:
+     diwali_wish_in_url_text += charecter
+    
+   st.write('<a href = "https://web.whatsapp.com/send?phone={}&text={}">Send Diwali Wish</a>'.format(phone_number_or_group_id, diwali_wish_in_url_text), unsafe_allow_html = True)
