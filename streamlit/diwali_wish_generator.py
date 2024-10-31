@@ -2,7 +2,7 @@ import requests
 import webbrowser
 
 def generate_diwali_wish():
- prompt = 'create a joyfull and reflecting diwali wish for a single person'
+ prompt = 'create a joyfull and reflecting diwali wish for a single person in 1 sentence'
  
  myobj = {"contents":[{"parts":[{"text":prompt}]}]}
 
