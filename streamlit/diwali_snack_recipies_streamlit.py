@@ -1,22 +1,26 @@
 import streamlit as st
 import diwali_snack_recipies
 
-snacks = diwali_snack_recipies.get_snack_options()
+for snack in diwali_snack_recipies.get_snack_options():
+ st.write(snack)
 
-st.write('choose any snack and start making your snack')
+st.write(' ')
 
-for snack in snacks:
- if st.button(snack):
-  recipie = diwali_snack_recipies.get_snack_recipies(snack)
+snack_name = st.text_input('Enter snack name from above menu')
+healthy_or_tasty = st.text_input('snack should be healthy/tasty')
 
-  st.write('ingredients - ')
+if st.button('Get Recipie'):
+ recipie = diwali_snack_recipies.get_snack_recipies(snack_name, healthy = healthy_or_tasty == 'healthy', tasty = healthy_or_tasty == 'tasty')
 
-  for ingredient in recipie[0]:
-   st.write(ingredient)
+ st.write('ingredients - ')
 
-  st.write(' ')
-  
-  st.write('instructions - ')
+ for ingredient in recipie[0]:
+  st.write(ingredient)
 
-  for instruction in recipie[1]:
-   st.write(instruction)
+ st.write(' ')
+
+ st.write('instructions - ')
+
+ for instruction in recipie[1]:
+  st.write(instruction)
+

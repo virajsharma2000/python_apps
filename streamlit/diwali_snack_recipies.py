@@ -1,3 +1,5 @@
+import requests
+
 recipies = {
   "recipes": [
     {
@@ -125,14 +127,34 @@ recipies = {
   ]
 }
 
-def get_snack_recipies(snack_name):
+def get_snack_recipies(snack_name, healthy = False, tasty = False):
  global recipies
 
  for snack in recipies['recipes']:
   if snack['name'] == snack_name:
-   return [[ingredient['item'] + ' - ' + ingredient['quantity'] for ingredient in snack['ingredients']], [instruction for instruction in snack['instructions']]]
-   break
+    recipie = [[ingredient['item'] + ' - ' + ingredient['quantity'] for ingredient in snack['ingredients']], [instruction for instruction in snack['instructions']]]
 
+    prompt = ''
+    
+    if healthy:
+     prompt = f'{recipie} make it healthier and return the same response as per request in array object'
+
+    if tasty:
+     prompt = f'{recipie} make it tasty and return the same response as per request in array object'
+
+    if prompt:
+     myobj = {"contents":[{"parts":[{"text":prompt}]}]}
+    
+     response = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyD1wjkjcVvOTqKHQdOuR-3NxhefycJrPAA', json = myobj)
+     json_response = response.json()
+    
+     recipie = json_response['candidates'][0]['content']['parts'][0]['text']
+
+     return eval(recipie)
+
+    else:
+     return recipie
+    
 def get_snack_options():
  global recipies
 
