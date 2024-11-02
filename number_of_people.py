@@ -13,7 +13,7 @@ while True:
   
   number_of_faces = len(faces)
 
-  print(number_of_faces)
+  print('number of faces', number_of_faces)
   
   break
 

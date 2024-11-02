@@ -1,7 +1,5 @@
 import cv2
 import cvlib
-import os
-import easygui
 
 camera = cv2.VideoCapture(2)
 
