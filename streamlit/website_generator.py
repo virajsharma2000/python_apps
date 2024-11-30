@@ -17,10 +17,10 @@ def generate_website(prompt, filename):
 
  with open(filename + '.html', "r") as f:
         st.download_button(
-            label="Download HTML Code",
-            data=f,
-            file_name="copied_text.txt",
-            mime="text/plain"
+            label = "Download HTML Code",
+            data = html_code,
+            file_name = "copied_text.txt",
+            mime = "text/plain"
         )
 
 prompt = st.text_input('Enter prompt')
