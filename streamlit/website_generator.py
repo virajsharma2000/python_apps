@@ -8,7 +8,7 @@ def generate_website(prompt, filename):
  
  myobj = {"contents":[{"parts":[{"text":prompt_to_send}]}]}
  response = requests.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAUuraOpGhAZ8qoU05pROFQBAl97hdp4bU', json = myobj)
- html_code = response.json()['candidates'][0]['content']['parts'][0]['text'].replace
+ html_code = response.json()['candidates'][0]['content']['parts'][0]['text']
 
  print(html_code)
  file = open(filename + '.html', 'w')
@@ -18,7 +18,7 @@ def generate_website(prompt, filename):
  with open(filename + '.html', "r") as f:
         st.download_button(
             label = "Download HTML Code",
-            data = html_code,
+            data = file,
             file_name = "copied_text.txt",
             mime = "text/plain"
         )
