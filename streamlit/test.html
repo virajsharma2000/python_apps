@@ -4,11 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Storefront</title>
+<title>Clothing Storefront</title>
 <style>
 body {
   font-family: sans-serif;
   margin: 0;
+  padding: 0;
+}
+
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -36,7 +40,7 @@ body {
 }
 
 .product button {
-  margin-top: 10px;
+  margin: 5px;
   padding: 8px 15px;
   background-color: #4CAF50;
   color: white;
@@ -44,11 +48,14 @@ body {
   cursor: pointer;
 }
 
-.product button:hover {
-  background-color: #45a049;
+
+@media (max-width: 768px) {
+  .product {
+    width: 45%;
+  }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 480px) {
   .product {
     width: 95%;
   }
@@ -57,43 +64,42 @@ body {
 </head>
 <body>
 
-<div class="product">
-  <img src="image1.jpg" alt="Cloth 1">
-  <div class="details">
-    <p><strong>Category:</strong> Shirt</p>
-    <p><strong>Price:</strong> $25</p>
-    <button>Buy Now</button>
-    <button>Save</button>
-    <button>Like</button>
+<div class="container">
+  <div class="product">
+    <img src="image1.jpg" alt="Cloth 1">
+    <div class="details">
+      <p>Price: $25</p>
+      <p>Category: Shirt</p>
+      <button>Like</button>
+      <button>Save</button>
+      <button>Buy</button>
+    </div>
   </div>
-</div>
-
-<div class="product">
-  <img src="image2.jpg" alt="Cloth 2">
-  <div class="details">
-    <p><strong>Category:</strong> Dress</p>
-    <p><strong>Price:</strong> $50</p>
-    <button>Buy Now</button>
-    <button>Save</button>
-    <button>Like</button>
+  <div class="product">
+    <img src="image2.jpg" alt="Cloth 2">
+    <div class="details">
+      <p>Price: $50</p>
+      <p>Category: Dress</p>
+      <button>Like</button>
+      <button>Save</button>
+      <button>Buy</button>
+    </div>
   </div>
-</div>
-
-<div class="product">
-  <img src="image3.jpg" alt="Cloth 3">
-  <div class="details">
-    <p><strong>Category:</strong> Pants</p>
-    <p><strong>Price:</strong> $35</p>
-    <button>Buy Now</button>
-    <button>Save</button>
-    <button>Like</button>
+  <div class="product">
+    <img src="image3.jpg" alt="Cloth 3">
+    <div class="details">
+      <p>Price: $30</p>
+      <p>Category: Pants</p>
+      <button>Like</button>
+      <button>Save</button>
+      <button>Buy</button>
+    </div>
   </div>
-</div>
+  </div> </div>
 
-<!-- Add more products here -->
 
 </body>
 </html>
 ```
 
-Remember to replace `"image1.jpg"`, `"image2.jpg"`, and `"image3.jpg"` with the actual paths to your images.  This provides basic responsiveness; for more advanced layouts consider using CSS frameworks like Bootstrap or Tailwind CSS.
+Remember to replace `"image1.jpg"`, `"image2.jpg"`, and `"image3.jpg"` with actual image file paths.  This code provides a basic responsive layout;  for more advanced features (e.g., dynamic content, shopping cart functionality), you would need JavaScript and potentially a server-side language.
