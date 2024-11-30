@@ -15,7 +15,7 @@ def generate_website(prompt, filename):
  file.write(html_code)
  file.close()
 
-  with open(filename + '.html', "r") as f:
+ with open(filename + '.html', "r") as f:
         st.download_button(
             label="Download HTML Code",
             data=f,
