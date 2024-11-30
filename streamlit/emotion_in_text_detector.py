@@ -9,3 +9,5 @@ def detect_emotion(text):
 
   return response.json()['candidates'][0]['content']['parts'][0]['text']
 
+
+detect_emotion('I am surprised')

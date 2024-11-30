@@ -1,0 +1,99 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storefront</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product .details {
+  margin-top: 10px;
+}
+
+.product .details p {
+  margin: 5px 0;
+}
+
+.product button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 350px) {
+  .product {
+    width: 95%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="product">
+  <img src="image1.jpg" alt="Cloth 1">
+  <div class="details">
+    <p><strong>Category:</strong> Shirt</p>
+    <p><strong>Price:</strong> $25</p>
+    <button>Buy Now</button>
+    <button>Save</button>
+    <button>Like</button>
+  </div>
+</div>
+
+<div class="product">
+  <img src="image2.jpg" alt="Cloth 2">
+  <div class="details">
+    <p><strong>Category:</strong> Dress</p>
+    <p><strong>Price:</strong> $50</p>
+    <button>Buy Now</button>
+    <button>Save</button>
+    <button>Like</button>
+  </div>
+</div>
+
+<div class="product">
+  <img src="image3.jpg" alt="Cloth 3">
+  <div class="details">
+    <p><strong>Category:</strong> Pants</p>
+    <p><strong>Price:</strong> $35</p>
+    <button>Buy Now</button>
+    <button>Save</button>
+    <button>Like</button>
+  </div>
+</div>
+
+<!-- Add more products here -->
+
+</body>
+</html>
+```
+
+Remember to replace `"image1.jpg"`, `"image2.jpg"`, and `"image3.jpg"` with the actual paths to your images.  This provides basic responsiveness; for more advanced layouts consider using CSS frameworks like Bootstrap or Tailwind CSS.
