@@ -1,3 +1,9 @@
+# neccessary dependencies
+from decimal import Decimal
+
+# for letting leetcode or other coding platforms know that this module is being used to solve problems
+print("Thanks for using mathematics module created by viraj sharma")
+
 # constant pi value
 pi_value = 3.141592653589793
 
@@ -7,11 +13,27 @@ def square_root(number):
 
  return square_root
 
+# calculates cube root of a number
+def cube_root(number):
+ return number ** 0.3333333333333333
+
 # calculates square of a number
 def square(number):
  square = number ** 2
 
  return square
+
+# calculates cube of the number
+def cube(number):
+ return number ** 3
+
+# calculates that the number is perfect square or not
+def is_perfect_square(number):
+ return number ** 0.5 == int(number ** 0.5)
+
+# calculates that the cube is perfect cube or not
+def is_perfect_cube(number):
+ return number ** 0.3333333333333333 == int(number ** 0.3333333333333333)
 
 # calculates hypotenus length of right angle tringle
 def hypotenus(x,y):
@@ -177,24 +199,8 @@ def factors(number):
 
 # gets hcf of 2 numbers
 def hcf(first_number,second_number):
- factors1 = []
- factors2 = []
- 
- num = 0
-
- for i in range(first_number):
-  num += 1
-
-  if first_number % num == 0:
-   factors1.append(num)
-
- num = 0
-
- for i in range(second_number):
-  num += 1
-
-  if second_number % num == 0:
-   factors2.append(num)
+ factors1 = factors(first_number)
+ factors2 = factors(second_number)
 
  common_factors = []
 
@@ -208,17 +214,8 @@ def hcf(first_number,second_number):
 
 # detects that number is prime number
 def is_it_prime_number(number):
- factors = []
- num = 0
-
- for i in range(number):
-  num += 1
-
-  if number % num == 0:
-   factors.append(num)
-
- is_it_prime_number = len(factors) == 2
-
+ is_it_prime_number = len(factors(number)) == 2
+ 
  return is_it_prime_number
 
 # gets factorial of a number (without recursion)
@@ -277,12 +274,141 @@ def mm_to_cm(mm):
 
  return cm
 
+# gets the standard form of number (small numbers of decimal form) number to be inputted in string
+def standard_form(num):
+ if Decimal(num) > Decimal('0.0') and Decimal(num) < Decimal('1.0') and str(num) == num:
+  exponent = 0
 
-   
+  while int(float(num)) == 0:
+   num = Decimal(num) * Decimal('10.0')
+   num = num.normalize()
+   exponent -= 1
 
+  return f"{num} * 10 ** {exponent}"
+
+ else:
+  raise ValueError('the number type might not be string or the number value might not be decimal')
+
+# split digits of integer into a list (without any conversions)
+def split_into_digits(num):
+ digits = []
+
+ while num > 0:
+  digits.append(num % 10)
+  num = (num - num % 10) // 10
+
+ return digits[::-1]
+
+# check weather integer is palindrome
+def is_palindrome(num):
+ return split_into_digits(num) == digits[::-1]
+
+# gets the number of cuts in a circle to break circle to number of pieces
+def minimum_cuts(number_of_pieces_to_break):
+ if number_of_pieces_to_break > 1:
+  return number_of_pieces_to_break // 2 if number_of_pieces_to_break % 2 == 0 else number_of_pieces_to_break
+
+ else:
+  return 0
+
+# get the type of triangle (returns none in string if the sides do not form triangle)
+def type_of_triangle(side1, side2, side3):
+ if side1 + side2 > side3 and side2 + side3 > side1  and side1 + side3 > side2:
+  if side1 == side2 and side2 == side3:
+   return "equilateral"
+
+  if side1 != side2 and side2 != side3 and side1 != side3:
+   return "scalene"
+
+  if side1 == side2 or side2 == side3 or side1 == side3:
+   return "isosceles"
+
+ else:
+  return "none"
+
+# gets the lcm of the number
+def lcm(number1, number2):
+ return (number1 * number2) // hcf(number1, number2)
+
+# performs all operations on fraction and has some more features of fraction
+class Fraction:
+ def __init__(self, fraction):
+  self.numerator = int(fraction.split('/')[0])
+  self.denominator = int(fraction.split('/')[1])
+
+ # simplifies the fraction
+ def simplify(self):
+  hcf_of_fraction = hcf(self.numerator, self.denominator)
+
+  return Fraction(f'{self.numerator // hcf_of_fraction}/{self.denominator // hcf_of_fraction}')
+
+ # checks weather the fraction is simplified
+ def is_simplified(self):
+  hcf_of_fraction = hcf(self.numerator, self.denominator)
+
+  return hcf_of_fraction == 1
+
+ # reciprocals the fraction
+ def reciprocal(self):
+  return Fraction(f'{self.denominator}/{self.numerator}')
+
+ # converts fraction object to string
+ def to_string(self):
+  return f'{self.numerator}/{self.denominator}'
+
+ # adds two fractions
+ def __add__(self, other):
+  lcm_of_denominators = lcm(self.denominator, other.denominator)
+
+  numerator1, numerator2 = lcm_of_denominators // self.denominator * self.numerator, lcm_of_denominators // other.denominator * other.numerator
+
+  return Fraction(f'{numerator1 + numerator2}/{lcm_of_denominators}')
+
+ # subtracts two fractions
+ def __sub__(self, other):
+  lcm_of_denominators = lcm(self.denominator, other.denominator)
+
+  numerator1, numerator2 = lcm_of_denominators // self.denominator * self.numerator, lcm_of_denominators // other.denominator * other.numerator
+
+  return Fraction(f'{numerator1 - numerator2}/{lcm_of_denominators}')
+
+ # multiplies two fractions
+ def __mul__(self, other):
+  return Fraction(f'{self.numerator * other.numerator}/{self.denominator * other.denominator}')
+
+ # divides two fractions
+ def __truediv__(self, other):
+  return Fraction(f'{self.numerator * other.denominator}/{self.denominator * other.numerator}')
+
+# has three features related to (x, y) coordinates
+class Point:
+ def __init__(self, x, y):
+  self.x = x
+  self.y = y
+
+ # calculates distance and direction between two points
+ def __sub__(self, other):
+  direction = ''
+  distance = square_root(square(other.x - self.x) + square(self.y - other.y))
+
+  if other.x > self.x:
+   direction += 'N'
+
+  if other.x < self.x:
+   direction += 'S'
+
+  if other.y > self.y:
+   direction += 'E'
+
+  if other.y < self.y:
+   direction += 'W'
   
+  return {'distance': distance, 'direction':direction, 'MidPoint': Point((self.x + other.x) / 2, (self.y + other.y) / 2)}
 
-  
+ # converts point into tuples
+ def to_tuple(self):
+  return (self.x, self.y)
+
 
 
 
