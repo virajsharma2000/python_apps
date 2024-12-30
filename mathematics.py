@@ -1,7 +1,7 @@
 # neccessary dependencies
 from decimal import Decimal
 
-# for letting leetcode or other coding platforms know that this module is being used to solve problems
+# for patenting my name
 print("Thanks for using mathematics module created by viraj sharma")
 
 # constant pi value
@@ -186,16 +186,7 @@ def aditive_inverse(number):
 
 # gets factors of a number
 def factors(number):
- factors = []
- num = 0
-
- for i in range(number):
-  num += 1
-
-  if number % num == 0:
-   factors.append(num)
-
- return factors
+ return [num for num in range(1, number + 1) if number % num == 0]
 
 # gets hcf of 2 numbers
 def hcf(first_number,second_number):
@@ -217,6 +208,18 @@ def is_it_prime_number(number):
  is_it_prime_number = len(factors(number)) == 2
  
  return is_it_prime_number
+
+# calculates prime factors of the numbers
+def prime_factorize(num):
+ minimum_prime_number_divisible = 0
+ prime_factors = []
+
+ while num > 1:
+  minimum_prime_number_divisible = min([n for n in factors(num) if is_it_prime_number(n)])
+  prime_factors.append(minimum_prime_number_divisible)
+  num //= minimum_prime_number_divisible
+
+ return prime_factors
 
 # gets factorial of a number (without recursion)
 def factorial(number):
@@ -409,6 +412,71 @@ class Point:
  def to_tuple(self):
   return (self.x, self.y)
 
+class Expression:
+ def __init__(self, expression):
+  self.expression = expression
+
+ # splits expression into terms
+ def split_into_terms(self):
+  expression = self.expression.replace(' ', '')
+ 
+  terms_list = []
+
+  for charecter in expression:
+   if charecter.isalpha() or charecter.isdigit() or charecter == '/' or charecter == '*':
+    if len(terms_list) > 0:
+     terms_list[len(terms_list) - 1] += charecter
+
+    else:
+     terms_list.append(charecter)
+
+   else:
+    terms_list.append(charecter)
+
+  return terms_list
+
+ # checks that the 2 terms are like terms or not
+ def __eq__(self, other):
+  if len(self.split_into_terms()) == 1 and len(other.split_into_terms()) == 1: 
+   variables_of_term1 = ''
+   variables_of_term2 = ''
+
+   for charecter in self.split_into_terms()[0]:
+    if charecter.isalpha():
+     variables_of_term1 += charecter
+
+   for charecter in other.split_into_terms()[0]:
+    if charecter.isalpha():
+     variables_of_term2 += charecter
+
+   return variables_of_term1 == variables_of_term2 and any(variables_of_term1) and any(variables_of_term2)
+
+ # identifies that the expression is algebric or not
+ def is_algebric_expression(self):
+  for term in self.split_into_terms():
+   for charecter in term:
+    if charecter.isalpha():
+     return True
+
+  return False
+
+ # gets the coefficient of the constant or a variable
+ def coefficient(self, variable_or_constant):
+  if variable_or_constant.isalpha() or variable_or_constant.isdigit():
+   if self.expression.index(variable_or_constant) == len(self.expression) - 1:
+    coefficient = self.expression[self.expression.index(variable_or_constant) - 1]
+
+   elif self.expression.index(variable_or_constant) == 0:
+    coefficient = self.expression[self.expression.index(variable_or_constant) + 1]
+
+   else:
+    coefficient = self.expression[self.expression.index(variable_or_constant) - 1] + self.expression[self.expression.index(variable_or_constant) + 1]
+
+  coefficient = '-1' if coefficient == '-' else '1' if coefficient == '+' else coefficient
+
+  return coefficient.replace('+', '') if coefficient.startswith('+') else coefficient
 
 
-
+  
+ 
+ 
