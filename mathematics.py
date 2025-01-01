@@ -1,8 +1,24 @@
 # neccessary dependencies
 from decimal import Decimal
 
-# for patenting my name
-print("Thanks for using mathematics module created by viraj sharma")
+# for patenting my name 
+print("Thanks for using mathematics module created by viraj sharma to view source code goto https://github.com/virajsharma2000/python_apps/blob/main/mathematics.py")
+
+# dictnoary of number names for time to text
+number_names = {
+    1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 
+    6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+    11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen", 15: "fifteen",
+    16: "sixteen", 17: "seventeen", 18: "eighteen", 19: "nineteen", 20: "twenty",
+    21: "twenty-one", 22: "twenty-two", 23: "twenty-three", 24: "twenty-four", 25: "twenty-five",
+    26: "twenty-six", 27: "twenty-seven", 28: "twenty-eight", 29: "twenty-nine", 30: "thirty",
+    31: "thirty-one", 32: "thirty-two", 33: "thirty-three", 34: "thirty-four", 35: "thirty-five",
+    36: "thirty-six", 37: "thirty-seven", 38: "thirty-eight", 39: "thirty-nine", 40: "forty",
+    41: "forty-one", 42: "forty-two", 43: "forty-three", 44: "forty-four", 45: "forty-five",
+    46: "forty-six", 47: "forty-seven", 48: "forty-eight", 49: "forty-nine", 50: "fifty",
+    51: "fifty-one", 52: "fifty-two", 53: "fifty-three", 54: "fifty-four", 55: "fifty-five",
+    56: "fifty-six", 57: "fifty-seven", 58: "fifty-eight", 59: "fifty-nine", 60: "sixty"
+}
 
 # constant pi value
 pi_value = 3.141592653589793
@@ -231,7 +247,7 @@ def factorial(number):
  else:
   while number != 1:
    number -= 1
-   factorial = factorial * number
+   factorial *= number
 
   return factorial
 
@@ -412,6 +428,7 @@ class Point:
  def to_tuple(self):
   return (self.x, self.y)
 
+# has all the features related to algebric or numeric expressions
 class Expression:
  def __init__(self, expression):
   self.expression = expression
@@ -476,7 +493,91 @@ class Expression:
 
   return coefficient.replace('+', '') if coefficient.startswith('+') else coefficient
 
-
+ # splits algebric expression into factors
+ def factorize(self):
+  factors_of_expression = []
   
- 
- 
+  for term in self.split_into_terms():
+   for char in term:
+    if char == '-':
+     factors_of_expression.append(-1)
+
+    elif char.isdigit():
+     factors_of_expression += prime_factorize(int(char))
+
+    elif char.isalpha():
+     factors_of_expression.append(char)
+
+  return factors_of_expression
+     
+
+# has few features related to time like convert it to text representation or convert 24 hour time to 12 hour time or calculate difference between two times
+class Time:
+ def __init__(self, time):
+  minute = int(time.split(':')[1])
+  hour = int(time.split(':')[0])
+
+  if hour == 0:
+   self.hour = 24
+
+  if hour <= 24 and minute <= 59 and minute >= 0:
+   self.hour = hour
+   self.minute = minute
+
+  else:
+   raise ValueError('invalid time')
+
+ # converts time to text
+ def convert_to_text(self):
+  past = ''
+  to = ''
+  
+  if self.minute == 15:
+   past = 'quater'
+
+  elif self.minute == 30:
+   past = 'half'
+
+  elif self.minute >= 45:
+   if self.minute == 45:
+    to = 'quater'
+
+   else:
+    to = number_names.get(60 - self.minute)
+    print(number_names.get(60 - self.minute))
+
+  elif self.minute > 0:
+   past = number_names.get(self.minute)
+
+  if past:
+   return f'{past} past {number_names.get(self.hour)}'
+
+  elif to:
+   return f'{to} to {number_names.get(self.hour + 1)}'
+
+  elif not past and not to:
+   return f'{number_names.get(self.hour)} o clock'
+
+ # converts 24 hour clock time to 12 hour clock time
+ def twelve_hour_time(self):
+  if self.hour < 13:
+   if self.minute < 9:
+    return f'{self.hour}:0{self.minute} AM'
+
+   else:
+    return f'{self.hour}:{self.minute} AM'
+
+  else:
+   if self.minute < 9:
+    return f'{self.hour - 12}:0{self.minute} PM'
+
+   else:
+    return f'{self.hour - 12}:{self.minute} PM'
+
+ # gets difference between two times (in minutes or hours or secs)
+ def __sub__(self, other):
+  mins1 = self.hour * 60 + self.minute
+  mins2 = other.hour * 60 + other.minute
+
+  return mins1 - mins2
+
