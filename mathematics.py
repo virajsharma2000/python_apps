@@ -540,15 +540,21 @@ class Expression:
 
   for term in Expression(expression_inside_paranthesis).split_into_terms():
    if not term.startswith('+') and not term.startswith('-'):
-    if common.isalpha():
-     expression += term + common
+    if term.isalpha():
+     expression += common + term
 
+    elif common.isalpha():
+     expressiom += term + common
+     
     else:
      expression += common + '*' + term
 
    else:
-    if common.isalpha():
-     expression += term + common
+    if term.replace(term[0], '').isalpha():
+     expression += term[0] + common + term.replace(term[0], '')
+     
+    elif common.isalpha():
+     expression += term[0] + common + term.replace(term[0], '')
 
     else:
      expression += term[0] + common + '*' + term.replace(term[0], '') 
