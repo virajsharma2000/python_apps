@@ -509,8 +509,52 @@ class Expression:
      factors_of_expression.append(char)
 
   return factors_of_expression
-     
 
+ # common factor of two terms (without brackets)
+ def find_common_factor(self, other):
+  if len(self.split_into_terms()) == 1 and len(other.split_into_terms()) == 1:
+   factors1 = self.factorize()
+   factors2 = other.factorize()
+
+   common_factors = []
+
+   for factor in factors1:
+    if factor in factors2 and factor not in common_factors:
+     common_factors.append(factor)
+     
+   return common_factors
+
+ # expands an exprssion (with brackets)
+ def expand_expression(self):
+  self.expression = self.expression.replace(' ', '')
+  
+  expression = ''
+
+  if self.expression[0] == '(':
+   common = self.expression.split(')(')[0] + ')'
+   expression_inside_paranthesis = self.expression.split(')(')[1].replace(')', '')
+
+  else:
+   common = self.expression.split('(')[0]
+   expression_inside_paranthesis = self.expression.split('(')[1].replace(')', '')
+
+  for term in Expression(expression_inside_paranthesis).split_into_terms():
+   if not term.startswith('+') or not term.startswith('-'):
+    if common.isalpha():
+     expression += term + common
+
+    else:
+     expression += common + '*' + term
+
+   else:
+    if common.isalpha():
+     expression += term[0] + term.replace(term[0], '') + common
+
+    else:
+     expression += term[0] + common + '*' + term.replace(term[0], '')
+
+  return Expression(expression)
+    
 # has few features related to time like convert it to text representation or convert 24 hour time to 12 hour time or calculate difference between two times
 class Time:
  def __init__(self, time):
@@ -580,4 +624,5 @@ class Time:
   mins2 = other.hour * 60 + other.minute
 
   return mins1 - mins2
+
 
