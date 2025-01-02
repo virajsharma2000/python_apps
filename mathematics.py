@@ -539,7 +539,7 @@ class Expression:
    expression_inside_paranthesis = self.expression.split('(')[1].replace(')', '')
 
   for term in Expression(expression_inside_paranthesis).split_into_terms():
-   if not term.startswith('+') or not term.startswith('-'):
+   if not term.startswith('+') and not term.startswith('-'):
     if common.isalpha():
      expression += term + common
 
@@ -548,11 +548,11 @@ class Expression:
 
    else:
     if common.isalpha():
-     expression += term[0] + term.replace(term[0], '') + common
+     expression += term + common
 
     else:
-     expression += term[0] + common + '*' + term.replace(term[0], '')
-
+     expression += term[0] + common + '*' + term.replace(term[0], '') 
+     
   return Expression(expression)
     
 # has few features related to time like convert it to text representation or convert 24 hour time to 12 hour time or calculate difference between two times
