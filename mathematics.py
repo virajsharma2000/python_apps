@@ -20,6 +20,82 @@ number_names = {
     56: "fifty-six", 57: "fifty-seven", 58: "fifty-eight", 59: "fifty-nine", 60: "sixty"
 }
 
+# intresting mathematicians
+mathematicians = {
+    "Isaac Newton": {
+        "Description": "English mathematician who co-invented calculus and made significant contributions to classical mechanics and optics.",
+        "BirthDate": "1643-01-04",
+        "DeathDate": "1727-03-31",
+        "KeyWorks": ["Calculus", "Laws of Motion", "Universal Gravitation"]
+    },
+    "Leonhard Euler": {
+        "Description": "Swiss mathematician known for his work in graph theory, topology, and introducing the modern notation for functions and constants like 'e'.",
+        "BirthDate": "1707-04-15",
+        "DeathDate": "1783-09-18",
+        "KeyWorks": ["Euler's Formula", "Graph Theory", "Number Theory"]
+    },
+    "Carl Friedrich Gauss": {
+        "Description": "German mathematician who contributed to number theory, geometry, statistics, and the theory of magnetism.",
+        "BirthDate": "1777-04-30",
+        "DeathDate": "1855-02-23",
+        "KeyWorks": ["Gaussian Elimination", "Prime Number Theorem", "Electromagnetic Theory"]
+    },
+    "Euclid": {
+        "Description": "Ancient Greek mathematician often referred to as the 'Father of Geometry'.",
+        "BirthDate": "300 BCE",
+        "DeathDate": "unknown",
+        "KeyWorks": ["Euclidean Geometry", "Elements"]
+    },
+    "Pythagoras": {
+        "Description": "Ancient Greek mathematician and philosopher known for the Pythagorean theorem and contributions to number theory.",
+        "BirthDate": "570 BCE",
+        "DeathDate": "495 BCE",
+        "KeyWorks": ["Pythagorean Theorem", "Numerical Mysticism"]
+    },
+    "Srinivasa Ramanujan": {
+        "Description": "Indian mathematician who made significant contributions to number theory, infinite series, and continued fractions despite limited formal training.",
+        "BirthDate": "1887-12-22",
+        "DeathDate": "1920-04-26",
+        "KeyWorks": ["Ramanujan Prime", "Partitions", "Modular Forms"]
+    },
+    "Alan Turing": {
+        "Description": "British mathematician known as the father of computer science, instrumental in cracking the Enigma code during World War II.",
+        "BirthDate": "1912-06-23",
+        "DeathDate": "1954-06-07",
+        "KeyWorks": ["Turing Machine", "Artificial Intelligence", "Cryptography"]
+    },
+    "Ada Lovelace": {
+        "Description": "English mathematician considered the first computer programmer for her work on Charles Babbage's Analytical Engine.",
+        "BirthDate": "1815-12-10",
+        "DeathDate": "1852-11-27",
+        "KeyWorks": ["First Algorithm", "Computing"]
+    },
+    "Blaise Pascal": {
+        "Description": "French mathematician known for Pascal's Triangle, contributions to probability theory, and early work on calculating machines.",
+        "BirthDate": "1623-06-19",
+        "DeathDate": "1662-08-19",
+        "KeyWorks": ["Pascal's Triangle", "Probability Theory", "Pascal's Law"]
+    },
+    "Hypatia": {
+        "Description": "Greek mathematician, philosopher, and astronomer; one of the earliest female mathematicians in recorded history.",
+        "BirthDate": "360 CE",
+        "DeathDate": "415 CE",
+        "KeyWorks": ["Conic Sections", "Astronomy", "Philosophy"]
+    },
+    "Andrew Wiles": {
+        "Description": "British mathematician who solved Fermat's Last Theorem, a problem that had been unsolved for over 350 years.",
+        "BirthDate": "1953-04-11",
+        "DeathDate": "N/A",
+        "KeyWorks": ["Fermat's Last Theorem", "Elliptic Curves"]
+    },
+    "John von Neumann": {
+        "Description": "Hungarian-American mathematician known for his work in quantum mechanics, game theory, and computer science.",
+        "BirthDate": "1903-12-28",
+        "DeathDate": "1957-02-08",
+        "KeyWorks": ["Game Theory", "Von Neumann Architecture", "Set Theory"]
+    }
+}
+
 # constant pi value
 pi_value = 3.141592653589793
 
@@ -330,7 +406,7 @@ def minimum_cuts(number_of_pieces_to_break):
  else:
   return 0
 
-# get the type of triangle (returns none in string if the sides do not form triangle)
+# gets the type of triangle (returns none in string if the sides do not form triangle)
 def type_of_triangle(side1, side2, side3):
  if side1 + side2 > side3 and side2 + side3 > side1  and side1 + side3 > side2:
   if side1 == side2 and side2 == side3:
@@ -344,6 +420,18 @@ def type_of_triangle(side1, side2, side3):
 
  else:
   return "none"
+
+# gets the expanded form of a number
+def expanded_form(number):
+ expanded_form = []
+ number_position = 0
+
+ while number > 0:
+  expanded_form.append(number % 10 * 10 ** number_position)
+  number = (number - number % 10) // 10
+  number_position += 1
+
+ return expanded_form
 
 # gets the lcm of the number
 def lcm(number1, number2):
@@ -631,4 +719,35 @@ class Time:
 
   return mins1 - mins2
 
+# creates list of intresting mathematicians
+def intresting_mathematicians_list():
+ return [mathematician for mathematician in mathematicians]
+
+# gets the description of the mathematician
+def description(mathematician_name):
+ return mathematicians[mathematician_name]['Description']
+
+# gets the keyworks of mathematicians
+def keyworks(mathematician_name):
+ return mathematicians[mathematician_name]['KeyWorks']
+
+# gets the lifespan of mathematician
+def lifespan(mathematician_name):
+ birthdate = mathematicians[mathematician_name]['BirthDate']
+ deathdate = mathematicians[mathematician_name]['DeathDate']
+
+ splitted_birthdate = birthdate.split('-')
+ splitted_deathdate = deathdate.split('-')
+
+ if len(splitted_birthdate) > 1 and len(splitted_deathdate) > 1:
+  year1 = int(splitted_deathdate[0])
+  year2 = int(splitted_birthdate[0])
+
+  return year1 - year2 + (int(splitted_birthdate[1]) <= int(splitted_deathdate[1]) or int(splitted_birthdate[2]) <= int(splitted_deathdate[2]))
+
+ else:
+  year1 = int(splitted_birthdate[0].replace('BCE', '').replace('CE', ''))
+  year2 = int(splitted_deathdate[0].replace('BCE', '').replace('CE', ''))
+
+  return year2 - year1
 
