@@ -99,6 +99,9 @@ mathematicians = {
 # constant pi value
 pi_value = 3.141592653589793
 
+# keprekar's constant
+kaprekar_constant = 6174
+
 # calculates square root of a number
 def square_root(number):
  square_root = number ** 0.5
@@ -394,6 +397,37 @@ def split_into_digits(num):
 
  return digits[::-1]
 
+# combines array of digits into number (without any conversions)
+def combine_digits(digits):
+ num = 0
+
+ for digit in digits:
+  num = num * 10 + digit
+
+ return num
+
+# gets number of iterations to applied on number for kaprekar's routine
+def iterations_of_keprekar_routine(num):
+ iterations = 0
+ 
+ while num != kaprekar_constant:
+  splitted_digits_of_number = split_into_digits(num)
+  ascending_digits = []
+  
+  while splitted_digits_of_number:
+   ascending_digits.append(max(splitted_digits_of_number))
+   splitted_digits_of_number.remove(max(splitted_digits_of_number))
+  
+  num = abs(combine_digits(ascending_digits) - combine_digits(ascending_digits[::-1]))
+
+  if num > 0:
+   iterations += 1
+
+  else:
+   raise ValueError('Is a repdigit number')
+
+ return iterations
+  
 # check weather integer is palindrome
 def is_palindrome(num):
  return split_into_digits(num) == digits[::-1]
