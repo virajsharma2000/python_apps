@@ -432,6 +432,32 @@ def iterations_of_keprekar_routine(num):
 def is_palindrome(num):
  return split_into_digits(num) == digits[::-1]
 
+# seprates number into commas (using international system)
+def seperate_digits_of_number(n, seperator = ','):
+ commas_seperated_number = ''
+ digits_added = 0
+
+ while n > 0:
+  commas_seperated_number += str(n % 10)
+  n = (n - n % 10) // 10
+  digits_added += 1
+
+  if digits_added == 3:
+   commas_seperated_number += seperator
+   digits_added = 0
+
+ commas_seperated_number = commas_seperated_number[::-1]
+     
+ if len(commas_seperated_number) > 0:
+  if commas_seperated_number[0] == seperator:
+   return commas_seperated_number[1:len(commas_seperated_number)]
+
+  else:
+   return commas_seperated_number
+
+ else:
+  return "0"
+
 # gets the number of cuts in a circle to break circle to number of pieces
 def minimum_cuts(number_of_pieces_to_break):
  if number_of_pieces_to_break > 1:
