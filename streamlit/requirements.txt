@@ -1,2 +1,2 @@
 haversine
-dotenv
+python-dotenv
