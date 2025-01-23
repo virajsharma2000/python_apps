@@ -784,13 +784,13 @@ class Time:
  import turtle
 
  # shows the analog format of digital format
- def analog_format(self):
+ def analog_format(self, clock_image_path):
   hour_angle = self.hour * 30
   minute_angle = self.minute * 6
 
   t = turtle.Turtle()
 
-  turtle.bgpic('/home/viraj/Downloads/clock_without_hands.png')
+  turtle.bgpic(clock_image_path)
 
   t.left(90)
   t.right(hour_angle)
