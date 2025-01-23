@@ -1,5 +1,6 @@
 # neccessary dependencies
 from decimal import Decimal
+import turtle
 
 # for patenting my name 
 print("Thanks for using mathematics module created by viraj sharma to view source code goto https://github.com/virajsharma2000/python_apps/blob/main/mathematics.py")
@@ -586,6 +587,7 @@ class Expression:
   expression = self.expression.replace(' ', '')
  
   terms_list = []
+  idx = 0
 
   for charecter in expression:
    if charecter.isalpha() or charecter.isdigit() or charecter == '/' or charecter == '*':
@@ -778,6 +780,29 @@ class Time:
   mins2 = other.hour * 60 + other.minute
 
   return mins1 - mins2
+
+ import turtle
+
+ # shows the analog format of digital format
+ def analog_format(self):
+  hour_angle = self.hour * 30
+  minute_angle = self.minute * 6
+
+  t = turtle.Turtle()
+
+  turtle.bgpic('/home/viraj/Downloads/clock_without_hands.png')
+
+  t.left(90)
+  t.right(hour_angle)
+  t.forward(50)
+  t.width(10)
+  t.backward(50)
+  t.width(10)
+  t.setheading(90)
+  t.width(5)
+  t.right(minute_angle)
+  t.width(5)
+  t.forward(100)
 
 # creates list of intresting mathematicians
 def intresting_mathematicians_list():
