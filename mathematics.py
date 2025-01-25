@@ -781,11 +781,9 @@ class Time:
 
   return mins1 - mins2
 
- import turtle
-
  # shows the analog format of digital format
  def analog_format(self, clock_image_path):
-  hour_angle = self.hour * 30
+  hour_angle = self.hour * 30 + self.minute * 0.5
   minute_angle = self.minute * 6
 
   t = turtle.Turtle()
