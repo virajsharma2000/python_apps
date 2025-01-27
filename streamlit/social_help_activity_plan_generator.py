@@ -10,15 +10,16 @@ type_of_organisation = st.selectbox('Type of organisation', ('Education institut
 name_of_organisation = st.text_input('Enter the organisation name')
 
 st.subheader('Activity Details')
+activity_type = st.selectbox('Type of activity', ('Feeding Drive', 'Cleaning Drive', 'Create shelters for animals'))
 number_of_people_to_involve = st.slider("Number of people as volenteers", 100, 1000)
 budget_of_csr = st.slider('Budget of CSR', 100000, 1000000000)
-activity_type = st.selectbox('Type of activity', ('Feeding Drive', 'Cleaning Drive', 'Create shelters for animals'))
+frequency_of_activity = st.selectbox('Frequency of activity', ('Weekly', 'Monthly', 'Annuly'))
 
 if st.button('Generate Plan'):
  dotenv.load_dotenv()
  api_key = os.environ.get('API_KEY')
  
- prompt = f"I am from {type_of_organisation} and this organisation is {type_of_organisation} and I want to do {activity_type} I have {number_of_people_to_involve} volunteers to do this activity and I have Rs.{budget_of_csr} to do my activity according to this information tell me the plan and the location which other organisations have not done and is very unique"
+ prompt = f"I am from {type_of_organisation} and this organisation is {name_of_organisation} and I want to do {activity_type} I have {number_of_people_to_involve} volunteers to do this activity and I have Rs.{budget_of_csr} to do my activity. I want to do this activity {frequency_of_activity}. According to this information tell me the plan and the location which other organisations have not done and also create a press report of this activity"
 
  myobj = {"contents":[{"parts":[{"text":prompt}]}]}
  
