@@ -11,8 +11,8 @@ name_of_organisation = st.text_input('Enter the organisation name')
 
 st.subheader('Activity Details')
 activity_type = st.selectbox('Type of activity', ('Feeding Drive', 'Cleaning Drive', 'Create shelters for animals'))
-number_of_people_to_involve = st.slider("Number of people as volenteers", 100, 1000)
-budget_of_csr = st.slider('Budget of CSR', 100000, 1000000000)
+number_of_people_to_involve = st.slider("Number of people as volenteers", 1, 1000)
+budget_of_csr = st.slider('Budget of CSR', 1000, 100000)
 frequency_of_activity = st.selectbox('Frequency of activity', ('Weekly', 'Monthly', 'Annuly'))
 
 if st.button('Generate Plan'):
