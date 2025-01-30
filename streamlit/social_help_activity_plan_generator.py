@@ -5,8 +5,8 @@ import dotenv
 
 st.set_page_config(
    page_title="CSR App - Viraj Sharma",
-   page_icon="🧊",
-   layout="wide",
+   page_icon="https://sharmaviraj.com/vicon.png",
+   layout="centered",
    initial_sidebar_state="expanded",
 )
 
