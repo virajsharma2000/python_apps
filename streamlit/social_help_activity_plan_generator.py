@@ -3,6 +3,13 @@ import requests
 import os
 import dotenv
 
+st.set_page_config(
+   page_title="CSR App - Viraj Sharma",
+   page_icon="🧊",
+   layout="wide",
+   initial_sidebar_state="expanded",
+)
+
 st.title('CSR Application')
 
 st.subheader('Details of organisation')
