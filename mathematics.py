@@ -834,3 +834,12 @@ def lifespan(mathematician_name):
 
   return year2 - year1
 
+# checks that the data can form linear graph
+def can_form_linear_graph(data):
+ differences = []
+
+ for i in range(len(data) - 1):
+  differences.append(data[i + 1] - data[i])
+
+ return sum(differences) == differences[0] * len(differences)
+
