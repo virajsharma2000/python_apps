@@ -501,52 +501,105 @@ def lcm(number1, number2):
 # performs all operations on fraction and has some more features of fraction
 class Fraction:
  def __init__(self, fraction):
-  self.numerator = int(fraction.split('/')[0])
-  self.denominator = int(fraction.split('/')[1])
+  fraction = fraction.replace(' ', '')
+  
+  if fraction[1] != '*':
+   self.numerator = int(fraction.split('/')[0])
+   self.denominator = int(fraction.split('/')[1])
 
- # simplifies the fraction
- def simplify(self):
-  hcf_of_fraction = hcf(self.numerator, self.denominator)
+   self.whole_number = 1
 
-  return Fraction(f'{self.numerator // hcf_of_fraction}/{self.denominator // hcf_of_fraction}')
+  else:
+   self.numerator = int(fraction.split('/')[0].split('*')[1])
+   self.denominator = int(fraction.split('/')[1])
 
- # checks weather the fraction is simplified
- def is_simplified(self):
-  hcf_of_fraction = hcf(self.numerator, self.denominator)
+   self.whole_number = int(fraction.split('*')[0])
 
-  return hcf_of_fraction == 1
-
- # reciprocals the fraction
- def reciprocal(self):
-  return Fraction(f'{self.denominator}/{self.numerator}')
+ # converts fraction to improper fraction
+ def improper_fraction(self):
+  return Fraction(f'{self.denominator * self.whole_number + self.numerator}/{self.denominator}')
 
  # converts fraction object to string
  def to_string(self):
-  return f'{self.numerator}/{self.denominator}'
+  if self.whole_number > 1:
+   return f'{self.whole_number}*{self.numerator}/{self.denominator}'
+
+  else:
+   return f'{self.numerator}/{self.denominator}'
+
+ # simplifies the fraction
+ def simplify(self):
+  if self.whole_number == 1:
+   hcf_of_fraction = hcf(numerator, denominator)
+
+   return Fraction(f'{self.numerator // hcf_of_fraction}/{self.denominator // hcf_of_fraction}')
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
+
+ # checks weather the fraction is simplified
+ def is_simplified(self):
+  if self.whole_number == 1:
+   hcf_of_fraction = hcf(numerator, self.denominator)
+
+   return hcf_of_fraction == 1
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
+
+ # reciprocals the fraction
+ def reciprocal(self):
+  if self.whole_number == 1:
+   return Fraction(f'{self.denominator}/{self.numerator}')
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
+
+ # converts fraction to mixed fraction
+ def mixed_fraction(self):
+  quotient, remainder = divmod(self.numerator, self.denominator)
+  
+  return Fraction(f'{quotient}*{remainder}/{self.denominator}')
 
  # adds two fractions
  def __add__(self, other):
-  lcm_of_denominators = lcm(self.denominator, other.denominator)
+  if self.whole_number == 1 and other.whole_number == 1:
+   lcm_of_denominators = lcm(self.denominator, other.denominator)
 
-  numerator1, numerator2 = lcm_of_denominators // self.denominator * self.numerator, lcm_of_denominators // other.denominator * other.numerator
+   numerator1, numerator2 = lcm_of_denominators // self.denominator * self.numerator, lcm_of_denominators // other.denominator * other.numerator
 
-  return Fraction(f'{numerator1 + numerator2}/{lcm_of_denominators}')
+   return Fraction(f'{numerator1 + numerator2}/{lcm_of_denominators}')
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
 
  # subtracts two fractions
  def __sub__(self, other):
-  lcm_of_denominators = lcm(self.denominator, other.denominator)
+  if self.whole_number == 1 and other.whole_number == 1:
+   lcm_of_denominators = lcm(self.denominator, other.denominator)
 
-  numerator1, numerator2 = lcm_of_denominators // self.denominator * self.numerator, lcm_of_denominators // other.denominator * other.numerator
+   numerator1, numerator2 = lcm_of_denominators // self.denominator * self.numerator, lcm_of_denominators // other.denominator * other.numerator
 
-  return Fraction(f'{numerator1 - numerator2}/{lcm_of_denominators}')
+   return Fraction(f'{numerator1 - numerator2}/{lcm_of_denominators}')
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
 
  # multiplies two fractions
  def __mul__(self, other):
-  return Fraction(f'{self.numerator * other.numerator}/{self.denominator * other.denominator}')
+  if self.whole_number == 1 and other.whole_number == 1:
+   return Fraction(f'{self.numerator * other.numerator}/{self.denominator * other.denominator}')
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
 
  # divides two fractions
  def __truediv__(self, other):
-  return Fraction(f'{self.numerator * other.denominator}/{self.denominator * other.numerator}')
+  if self.whole_number == 1 and other.whole_number == 1:
+   return Fraction(f'{self.numerator * other.denominator}/{self.denominator * other.numerator}')
+
+  else:
+   raise ValueError('you must first convert the fraction into improper fraction, check in documentation')
 
 # has three features related to (x, y) coordinates
 class Point:
