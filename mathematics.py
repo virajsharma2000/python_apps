@@ -94,6 +94,54 @@ mathematicians = {
         "BirthDate": "1903-12-28",
         "DeathDate": "1957-02-08",
         "KeyWorks": ["Game Theory", "Von Neumann Architecture", "Set Theory"]
+    },
+    "Brahmagupta": {
+        "Description": "Indian mathematician and astronomer who introduced rules for arithmetic operations with zero and negative numbers.",
+        "BirthDate": "598 CE",
+        "DeathDate": "668 CE",
+        "KeyWorks": ["Brahmasphutasiddhanta", "Zero and Negative Numbers", "Algebraic Rules"]
+    },
+    "Aryabhata": {
+        "Description": "Ancient Indian mathematician and astronomer who introduced the concept of zero and approximated pi with remarkable accuracy.",
+        "BirthDate": "476 CE",
+        "DeathDate": "550 CE",
+        "KeyWorks": ["Aryabhatiya", "Trigonometry", "Pi Approximation"]
+    },
+    "Bhaskara I": {
+        "Description": "Indian mathematician who worked on the sine function and continued Aryabhata's work on astronomy and trigonometry.",
+        "BirthDate": "600 CE",
+        "DeathDate": "680 CE",
+        "KeyWorks": ["Sine Function", "Number System", "Astronomy"]
+    },
+    "Bhaskara II": {
+        "Description": "Indian mathematician who made significant contributions to calculus, algebra, and number systems.",
+        "BirthDate": "1114 CE",
+        "DeathDate": "1185 CE",
+        "KeyWorks": ["Bijaganita", "Lilavati", "Differential Calculus"]
+    },
+    "Madhava of Sangamagrama": {
+        "Description": "Indian mathematician and astronomer who laid the foundations for calculus and pioneered infinite series expansions.",
+        "BirthDate": "1350 CE",
+        "DeathDate": "1425 CE",
+        "KeyWorks": ["Madhava Series", "Infinite Series", "Trigonometry"]
+    },
+    "Narendra Karmarkar": {
+        "Description": "Indian mathematician and computer scientist known for the development of the Karmarkar algorithm for linear programming.",
+        "BirthDate": "1957-06-06",
+        "DeathDate": "N/A",
+        "KeyWorks": ["Karmarkar's Algorithm", "Optimization", "Computational Mathematics"]
+    },
+    "C. R. Rao": {
+        "Description": "Indian statistician known for his contributions to estimation theory, multivariate analysis, and the Cramér-Rao bound.",
+        "BirthDate": "1920-09-10",
+        "DeathDate": "2023-08-23",
+        "KeyWorks": ["Cramér-Rao Bound", "Multivariate Statistics", "Fisher Information"]
+    },
+    "Harish-Chandra": {
+        "Description": "Indian-American mathematician known for his work in representation theory and harmonic analysis.",
+        "BirthDate": "1923-10-11",
+        "DeathDate": "1983-10-16",
+        "KeyWorks": ["Harmonic Analysis", "Representation Theory", "Lie Groups"]
     }
 }
 
@@ -497,7 +545,7 @@ def expanded_form(number):
 # gets the lcm of the number
 def lcm(number1, number2):
  return (number1 * number2) // hcf(number1, number2)
-
+  
 # performs all operations on fraction and has some more features of fraction
 class Fraction:
  def __init__(self, fraction):
@@ -747,7 +795,7 @@ class Expression:
      expression += common + term
 
     elif common.isalpha():
-     expressiom += term + common
+     expression += term + common
      
     else:
      expression += common + '*' + term
@@ -757,7 +805,7 @@ class Expression:
      expression += term[0] + common + term.replace(term[0], '')
      
     elif common.isalpha():
-     expression += term[0] + common + term.replace(term[0], '')
+     expression += term + common
 
     else:
      expression += term[0] + common + '*' + term.replace(term[0], '') 
