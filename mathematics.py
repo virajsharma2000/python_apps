@@ -903,6 +903,157 @@ class Time:
   t.width(5)
   t.forward(100)
 
+# performs all operations on matrix and has few features of matrix
+class Matrix:
+ def __init__(self, matrix):
+  self.matrix = matrix
+
+ # adds metrices
+ def __add__(self, other):
+  result_matrix = []
+
+  for row in zip(self.matrix, other.matrix):
+   r = []
+
+   for num in zip(row[0], row[1]):
+    r.append(num[0] + num[1])
+
+   result_matrix.append(r)
+
+  if len(self.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in self.matrix:
+    if idx > len(other.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  if len(other.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in other.matrix:
+    if idx > len(self.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  return Matrix(result_matrix)
+
+ # subtracts metrices
+ def __sub__(self, other):
+  result_matrix = []
+
+  for row in zip(self.matrix, other.matrix):
+   r = []
+
+   for num in zip(row[0], row[1]):
+    r.append(num[0] - num[1])
+
+   result_matrix.append(r)
+  
+  if len(self.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in self.matrix:
+    if idx > len(other.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  if len(other.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in other.matrix:
+    if idx > len(self.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  return Matrix(result_matrix)
+
+ # multiplies metrices
+ def __mul__(self, other):
+  result_matrix = []
+
+  for row in zip(self.matrix, other.matrix):
+   r = []
+
+   for num in zip(row[0], row[1]):
+    r.append(num[0] * num[1])
+
+   result_matrix.append(r)
+
+  if len(self.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in self.matrix:
+    if idx > len(other.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  if len(other.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in other.matrix:
+    if idx > len(self.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  return Matrix(result_matrix)
+
+ # divides metrices
+ def __truediv__(self, other):
+  result_matrix = []
+
+  for row in zip(self.matrix, other.matrix):
+   r = []
+
+   for num in zip(row[0], row[1]):
+    r.append(num[0] / num[1])
+
+   result_matrix.append(r)
+   
+  if len(self.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in self.matrix:
+    if idx > len(other.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+
+  if len(other.matrix) > len(result_matrix):
+   idx = 0
+   
+   for row in other.matrix:
+    if idx > len(self.matrix) - 1:
+     result_matrix.append(row)
+
+    idx += 1
+     
+  return Matrix(result_matrix)
+
+ # converts the matrix object to string
+ def to_string(self):
+  string_matrix = ''
+
+  for row in self.matrix:
+    string_matrix += ' '.join(str(num) for num in row) + '\n'
+
+  return string_matrix[0:len(string_matrix) - 1]
+
+# converts the string object to matrix
+def string_to_matrix(string_matrix):
+ matrix = []
+ 
+ for row in string_matrix.splitlines():
+  matrix.append([int(num) for num in row.split()])
+
+ return matrix
+  
 # creates list of intresting mathematicians
 def intresting_mathematicians_list():
  return [mathematician for mathematician in mathematicians]
@@ -927,13 +1078,13 @@ def lifespan(mathematician_name):
   year1 = int(splitted_deathdate[0])
   year2 = int(splitted_birthdate[0])
 
-  return year1 - year2 + (int(splitted_birthdate[1]) <= int(splitted_deathdate[1]) or int(splitted_birthdate[2]) <= int(splitted_deathdate[2]))
+  return (year1 - year2) + (int(splitted_birthdate[1]) <= int(splitted_deathdate[1]) or int(splitted_birthdate[2]) <= int(splitted_deathdate[2]))
 
  else:
   year1 = int(splitted_birthdate[0].replace('BCE', '').replace('CE', ''))
   year2 = int(splitted_deathdate[0].replace('BCE', '').replace('CE', ''))
 
-  return year2 - year1
+  return year1 - year2
 
 # checks that the data can form linear graph
 def can_form_linear_graph(data):
@@ -943,4 +1094,7 @@ def can_form_linear_graph(data):
   differences.append(data[i + 1] - data[i])
 
  return sum(differences) == differences[0] * len(differences)
+
+
+
 
