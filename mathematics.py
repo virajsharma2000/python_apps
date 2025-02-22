@@ -1,6 +1,7 @@
 # neccessary dependencies
 from decimal import Decimal
 import turtle
+from pandas import Series
 
 # for patenting my name 
 print("Thanks for using mathematics module created by viraj sharma to view source code goto https://github.com/virajsharma2000/python_apps/blob/main/mathematics.py")
@@ -683,9 +684,15 @@ class Expression:
  def __init__(self, expression):
   self.expression = expression
 
+  self.constants = 0
+  self.numbers = 0
+
+  for char in expression:
+   self.constants += char.isalpha()
+  
  # splits expression into terms
  def split_into_terms(self):
-  expression = self.expression.replace(' ', '')
+  expression = self.expression.replace(' ', '').replace('(', '').replace(')', '')
  
   terms_list = []
   idx = 0
@@ -700,7 +707,7 @@ class Expression:
 
    else:
     terms_list.append(charecter)
-
+    
   return terms_list
 
  # checks that the 2 terms are like terms or not
@@ -780,14 +787,18 @@ class Expression:
   self.expression = self.expression.replace(' ', '')
   
   expression = ''
+  
+  splitted_expression = self.expression.split(')')
+
+  expression_outside_paranthesis = splitted_expression[len(splitted_expression) - 1] 
 
   if self.expression[0] == '(':
    common = self.expression.split(')(')[0] + ')'
-   expression_inside_paranthesis = self.expression.split(')(')[1].replace(')', '')
+   expression_inside_paranthesis = self.expression.split(')(')[1].split(')')[0]
 
   else:
    common = self.expression.split('(')[0]
-   expression_inside_paranthesis = self.expression.split('(')[1].replace(')', '')
+   expression_inside_paranthesis = self.expression.split('(')[1].split(')')[0]
 
   for term in Expression(expression_inside_paranthesis).split_into_terms():
    if not term.startswith('+') and not term.startswith('-'):
@@ -809,8 +820,8 @@ class Expression:
 
     else:
      expression += term[0] + common + '*' + term.replace(term[0], '') 
-     
-  return Expression(expression)
+  
+  return Expression(expression + expression_outside_paranthesis)
     
 # has few features related to time like convert it to text representation or convert 24 hour time to 12 hour time or calculate difference between two times
 class Time:
@@ -845,7 +856,6 @@ class Time:
 
    else:
     to = number_names.get(60 - self.minute)
-    print(number_names.get(60 - self.minute))
 
   elif self.minute > 0:
    past = number_names.get(self.minute)
@@ -1095,6 +1105,39 @@ def can_form_linear_graph(data):
 
  return sum(differences) == differences[0] * len(differences)
 
+# predicts data using direct and inverse proportions (using pandas df object) and returns in pandas series object
+def predict_y(df, column_x_data):
+ cols = df.columns
 
+ direct_proportion_ratios = []
+ inverse_proportion_ratios = []
+ 
+ for num1, num2 in zip(df[cols[0]], df[cols[1]]):
+  direct_proportion_ratios.append(num1 / num2)
+  inverse_proportion_ratios.append(num1 * num2)
 
+ if direct_proportion_ratios[0] * len(direct_proportion_ratios) == sum(direct_proportion_ratios):
+  x = df[cols[0]][len(df[cols[0]]) - 1]
+  y = df[cols[1]][len(df[cols[0]]) - 1]
+
+  column_y_data = []
+
+  for num in column_x_data:
+   column_y_data.append((num * y) / x)
+
+  return Series(data = column_y_data)
+
+ elif inverse_proportion_ratios[0] * len(inverse_proportion_ratios) == sum(inverse_proportion_ratios):
+  x = df[cols[0]][len(df[cols[0]]) - 1]
+  y = df[cols[1]][len(df[cols[0]]) - 1]
+
+  column_y_data = []
+
+  for num in column_x_data:
+   column_y_data.append((x * y) / num)
+
+  return Series(data = column_y_data) 
+  
+ else:
+  raise ValueError('data not in proportion')
 
