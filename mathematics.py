@@ -146,7 +146,35 @@ mathematicians = {
     }
 }
 
-# constant pi value
+# dictnoary of devanrangi digits
+devarangi_numbers = {
+    0: '०',  # शून्य (Shunya)
+    1: '१',  # एक (Ek)
+    2: '२',  # दो (Do)
+    3: '३',  # तीन (Teen)
+    4: '४',  # चार (Chaar)
+    5: '५',  # पाँच (Paanch)
+    6: '६',  # छह (Chhah)
+    7: '७',  # सात (Saat)
+    8: '८',  # आठ (Aath)
+    9: '९'   # नौ (Nau)
+}
+
+# reversed devarangi number
+reversed_devarangi_numbers = {
+    '०': 0,  # Shunya
+    '१': 1,  # Ek
+    '२': 2,  # Do
+    '३': 3,  # Teen
+    '४': 4,  # Chaar
+    '५': 5,  # Paanch
+    '६': 6,  # Chhah
+    '७': 7,  # Saat
+    '८': 8,  # Aath
+    '९': 9   # Nau
+}
+
+# constant pi value 
 pi_value = 3.141592653589793
 
 # keprekar's constant
@@ -508,6 +536,23 @@ def seperate_digits_of_number(n, seperator = ','):
  else:
   return "0"
 
+# converts integer to devrangi number
+def convert_to_devarangi_number(number):
+ devarangi_number = ''
+ 
+ for digit in split_into_digits(number):
+  devarangi_number += devarangi_numbers.get(digit)
+
+ return devarangi_number
+
+def convert_to_english_number(devarangi_number):
+ number = 0
+
+ for digit in devarangi_number:
+  number = number * 10 + reversed_devarangi_numbers.get(digit)
+
+ return number
+ 
 # gets the number of cuts in a circle to break circle to number of pieces
 def minimum_cuts(number_of_pieces_to_break):
  if number_of_pieces_to_break > 1:
@@ -546,7 +591,7 @@ def expanded_form(number):
 # gets the lcm of the number
 def lcm(number1, number2):
  return (number1 * number2) // hcf(number1, number2)
-  
+
 # performs all operations on fraction and has some more features of fraction
 class Fraction:
  def __init__(self, fraction):
@@ -1141,3 +1186,11 @@ def predict_y(df, column_x_data):
  else:
   raise ValueError('data not in proportion')
 
+# converts the solar years to divine years
+def solar_years_to_divine_years(years):
+ return years * 360
+
+# converts divine years to solar years
+def divine_years_to_solar_years(years):
+ return years / 360
+ 
