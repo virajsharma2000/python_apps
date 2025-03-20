@@ -2,5 +2,6 @@ haversine
 python-dotenv
 transformers
 pillow
-tf-keras
+tensorflow
+keras
 io
