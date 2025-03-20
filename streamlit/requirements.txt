@@ -2,7 +2,7 @@ haversine
 python-dotenv
 pillow
 streamlit
-tensorflow<2.15
-keras<3.0.0
-transformers
+tensorflow==2.14.0
+keras==2.14.0
+transformers==4.36.2
 
