@@ -1,7 +1,8 @@
 haversine
 python-dotenv
-transformers
 pillow
-tensorflow
-tf-keras
+streamlit
+tensorflow<2.15
 keras<3.0.0
+transformers
+
