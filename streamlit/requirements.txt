@@ -3,6 +3,6 @@ python-dotenv
 pillow
 streamlit
 tensorflow==2.16.1
-keras==2.16.0
+tf-keras
 transformers==4.37.2
 
