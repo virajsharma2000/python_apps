@@ -3,5 +3,7 @@ python-dotenv
 transformers
 pillow
 tensorflow
+tf-keras
+keras<3.0.0
 keras
 
