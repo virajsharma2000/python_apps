@@ -2,9 +2,6 @@ import streamlit as st
 from transformers import pipeline
 from PIL import Image
 import io
-import os
-
-os.environ["TF_USE_LEGACY_KERAS"] = "1"  # Forces TensorFlow to use legacy Keras
 
 def identify_breed(dog_photo):
  dog_breed_detect = pipeline('image-classification', model = 'wesleyacheng/dog-breeds-multiclass-image-classification-with-vit')
