@@ -845,7 +845,6 @@ class Time:
 
    else:
     to = number_names.get(60 - self.minute)
-    print(number_names.get(60 - self.minute))
 
   elif self.minute > 0:
    past = number_names.get(self.minute)
@@ -1093,7 +1092,7 @@ def can_form_linear_graph(data):
  for i in range(len(data) - 1):
   differences.append(data[i + 1] - data[i])
 
- return sum(differences) == differences[0] * len(differences)
+ return differences.count(differences[0]) == len(differences)
 
 
 
