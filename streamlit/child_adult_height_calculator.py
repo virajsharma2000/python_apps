@@ -29,10 +29,10 @@ def calculate_adult_height(age, current_height):
   st.error('Age must be between 1 and 17')
 
 
-st.write('<h1>Calculate your adolescent adult height within seconds!!</h1>', unsafe_allow_html=True)    
+st.write('<h1>Calculate your adolescent  or your child\'s adult hood height within seconds!!</h1>', unsafe_allow_html=True)    
 
-height = st.text_input('your adolescent height')
-age = st.text_input('Enter adolescent age')
+height = st.text_input('your child\'s height')
+age = st.text_input('your child\'s age')
 
 if st.button('Calculate'):
  height = calculate_adult_height(int(age), float(height))
