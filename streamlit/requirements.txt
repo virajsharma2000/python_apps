@@ -1,3 +1,7 @@
 haversine
 python-dotenv
 bs4
+pillow
+qrcode
+transformers == 4.51.2
+tensorflow == 2.19.0
