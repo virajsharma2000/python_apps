@@ -19,9 +19,7 @@ def parse_samosa(samosa_code):
 
 st.title('A online kiddish samosa commandlines parser')
 
-st.header('syntax - samosa[samosa_type] x samosa_quantity + samosa[samosa_type] x samosa_quantity')
-
-samosa_code = st.text_area('Type your samosa code here', height = 300)
+samosa_code = st.text_area('Type your samosa code here', height = 300, value = 'samosa[paneer] x9 + samosa[aaloo] x10')
 samosa_parse_button = st.button('parse samosa code')
 
 if samosa_parse_button:
