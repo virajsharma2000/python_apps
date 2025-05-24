@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 
 def parse_samosa(samosa_code):
  samosa_code = samosa_code.replace(' ', '')
@@ -32,5 +33,5 @@ if samosa_parse_button:
  json_output = parse_samosa(samosa_code)
 
 with right_col:
- st.text_area('output', height = 300, value = json_output)
+ st.text_area('output', height = 300, value = json.dumps(json_output, indent = 4))
 
