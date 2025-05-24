@@ -30,7 +30,7 @@ samosa_parse_button = st.button('parse samosa code')
 json_output = ""
 
 if samosa_parse_button:
- json_output = json.dumps(json.loads(parse_samosa(samosa_code)), indent = 4)
+ json_output = json.dumps(parse_samosa(samosa_code), indent = 4)
 
 with right_col:
  st.text_area('output', height = 300, value = json_output)
