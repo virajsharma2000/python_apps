@@ -1,5 +1,4 @@
 import streamlit as st
-import json
 
 def parse_samosa(samosa_code):
  samosa_code = samosa_code.replace(' ', '')
@@ -18,7 +17,6 @@ def parse_samosa(samosa_code):
  return samosa_json_data
 
 
-print(parse_samosa(samosa_code))
 st.title('A online kiddish samosa commandlines parser')
 
 left_col, right_col = st.columns([2, 1])
@@ -31,7 +29,7 @@ samosa_parse_button = st.button('parse samosa code')
 json_output = ""
 
 if samosa_parse_button:
- json_output = json.dumps(parse_samosa(samosa_code), indent = 4)
+ json_output = parse_samosa(samosa_code)
 
 with right_col:
  st.text_area('output', height = 300, value = json_output)
