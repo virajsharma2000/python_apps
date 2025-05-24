@@ -18,6 +18,7 @@ def parse_samosa(samosa_code):
  return samosa_json_data
 
 
+print(parse_samosa(samosa_code))
 st.title('A online kiddish samosa commandlines parser')
 
 left_col, right_col = st.columns([2, 1])
