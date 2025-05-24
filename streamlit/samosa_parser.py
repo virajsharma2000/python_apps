@@ -27,6 +27,8 @@ with left_col:
  
 samosa_parse_button = st.button('parse samosa code')
 
+json_output = ""
+
 if samosa_parse_button:
  json_output = json.dumps(json.loads(parse_samosa(samosa_code)), indent = 4)
 
