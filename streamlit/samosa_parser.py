@@ -33,5 +33,5 @@ if samosa_parse_button:
  json_output = parse_samosa(samosa_code)
 
 with right_col:
- st.text_area('output', height = 300, value = json.dumps(json_output, indent = 4))
+ st.text_area('output', height = 300, value = json.dumps(json_output, indent = 4) if json.dumps(json_output, indent = 4) else '')
 
