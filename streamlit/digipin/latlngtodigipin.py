@@ -58,7 +58,8 @@ lon = st.text_input('Enter longitude')
 if st.button('Get Digipin'):
  digipin = latlng_to_digipin(float(lat), float(lon))
 
- st.subheader('your digipin: ' + str(digipin))
+ if digipin is not None:
+  st.subheader('your digipin: ' + str(digipin))
 
 
 
