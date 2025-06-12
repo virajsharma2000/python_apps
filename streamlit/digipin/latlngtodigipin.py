@@ -21,10 +21,10 @@ def latlng_to_digipin(lat, lon):
  minlon = bounds['minLon']
  
  if lat > maxlat or lat < minlat:
-  raise ValueError('latitude out of range') 
+  st.error('latitude out of range')
  
  elif lon > maxlon or lon < minlon:
-  raise ValueError('longitude out of range')
+  st.error('longitude out of range')
 
  digipin = ''
 
