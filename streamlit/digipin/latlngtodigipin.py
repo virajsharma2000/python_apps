@@ -20,12 +20,6 @@ def latlng_to_digipin(lat, lon):
  minlat = bounds['minLat']
  minlon = bounds['minLon']
  
- if lat > maxlat or lat < minlat:
-  st.error('latitude out of range')
- 
- elif lon > maxlon or lon < minlon:
-  st.error('longitude out of range')
-
  digipin = ''
 
  for i in range(10):
@@ -46,7 +40,14 @@ def latlng_to_digipin(lat, lon):
   minlon = minlon + londiv * col
   maxlon = minlon + londiv
 
- return digipin[:3] + '-' + digipin[3:6] + '-' + digipin[6:10]
+ if lat > maxlat or lat < minlat:
+  st.error('latitude out of range')
+ 
+ elif lon > maxlon or lon < minlon:
+  st.error('longitude out of range')
+
+ else:
+  return digipin[:3] + '-' + digipin[3:6] + '-' + digipin[6:10]
 
 
 st.title('get your house coordinates to digipin if you forgotten it')
