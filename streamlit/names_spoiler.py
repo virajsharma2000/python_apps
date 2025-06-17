@@ -44,7 +44,7 @@ animal_comments = {
 def spoil_name(name):
  name = name.lower()
  
- animal_name = animals[sum(ord(char) for char in name) % len(animals)]
+ animal_name = animals[sum(ord(char) for char in name.replace(' ', '')) % len(animals)]
  spoiled_name = name.split()[0] + ' ' + animal_name + ' ' + name.split()[1]
  
  description = animal_comments[animal_name]
