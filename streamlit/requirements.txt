@@ -2,6 +2,5 @@ haversine
 python-dotenv
 pillow
 pandas
-matplotlib
 fpdf
 json
