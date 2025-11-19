@@ -3,4 +3,3 @@ python-dotenv
 pillow
 pandas
 fpdf
-json
