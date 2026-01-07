@@ -3,3 +3,4 @@ python-dotenv
 pillow
 pandas
 fpdf
+sounddevice
