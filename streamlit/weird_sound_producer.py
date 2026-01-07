@@ -6,7 +6,7 @@ st.title('MAKE WEIRD NOISES AND SCARE PEOPLE AND CAUSE PANICS EASIALLY!!! 😈')
 def make_weird_noises(duration):
  fs = 44100
 
- sound = np.array([[0.9] * 700 + [-0.9] * 700] * ((fs * duration) // 2 // 700)).flatten()
+ sound = np.array([[0.9] * 800 + [-0.9] * 800] * ((fs * duration) // 2 // 700)).flatten()
 
  st.audio(sound, sample_rate = fs)
 
