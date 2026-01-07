@@ -8,7 +8,7 @@ def make_weird_noises(duration):
 
  sound = np.array([[0.9] * 1000 + [-0.9] * 1000] * ((fs * duration) // 2 // 1000)).flatten()
 
- st.audio(sound, samplerate = fs)
+ st.audio(sound, sample_rate = fs)
 
 duration = st.text_input('Enter duration here:')
 
