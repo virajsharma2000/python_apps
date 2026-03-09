@@ -1,0 +1,23 @@
+[
+  {"frequency": 523, "duration": 0.4},
+  {"frequency": 659, "duration": 0.3},
+  {"frequency": 784, "duration": 0.5},
+  {"frequency": 698, "duration": 0.3},
+  {"frequency": 587, "duration": 0.4},
+  {"frequency": 523, "duration": 0.6},
+  {"frequency": 494, "duration": 0.3},
+  {"frequency": 392, "duration": 0.5},
+  {"frequency": 440, "duration": 0.4},
+  {"frequency": 523, "duration": 0.5},
+  {"frequency": 659, "duration": 0.3},
+  {"frequency": 784, "duration": 0.6},
+  {"frequency": 698, "duration": 0.4},
+  {"frequency": 587, "duration": 0.3},
+  {"frequency": 523, "duration": 0.5},
+  {"frequency": 659, "duration": 0.4},
+  {"frequency": 784, "duration": 0.6},
+  {"frequency": 880, "duration": 0.3},
+  {"frequency": 987, "duration": 0.4},
+  {"frequency": 1046, "duration": 0.5}
+]
+
