@@ -7,7 +7,7 @@ import json
 # CONFIG
 # -----------------------------
 
-MONGO_URI = "mongodb+srv://virajsharma_db_user:pumpulili@cluster0.xclz1ks.mongodb.net/cluster0.xclz1ks.mongodb.net/?appName=Cluster0"
+MONGO_URI = f"mongodb+srv://virajsharma_db_user:{st.secrets['MONGO_PASSWORD']}@cluster0.xclz1ks.mongodb.net/cluster0.xclz1ks.mongodb.net/?appName=Cluster0"
 SARVAM_API_KEY = st.secrets['SARVAM_API_KEY']
 
 client = MongoClient(MONGO_URI)
