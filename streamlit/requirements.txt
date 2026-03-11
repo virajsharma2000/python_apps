@@ -5,4 +5,4 @@ pandas
 fpdf
 sounddevice
 pymongo
-pyttsx3
+gtts
