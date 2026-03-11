@@ -13,4 +13,4 @@ if st.button('Click Me'):
             window.open('https://lordofpotty.streamlit.app');
         </script>""")
   
-  st.write('<audio><source src = "speech.mp3" autoplay = "true" controls type = "audio/mp3"></audio>')
+  st.write('<audio><source src = "speech.mp3" autoplay = "true" controls type = "audio/mp3"></audio>', unsafe_allow_html = True)
