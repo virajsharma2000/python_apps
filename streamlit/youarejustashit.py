@@ -9,7 +9,6 @@ if st.button('Click Me'):
   tts = gTTS(text = 'you are just a shit', lang = 'en')
   tts.save('speech.mp3')
 
-  playsound.playsound('speech.mp3')
   components.html("""<script type="text/javascript">
             window.open('https://lordofpotty.streamlit.app');
         </script>""")
