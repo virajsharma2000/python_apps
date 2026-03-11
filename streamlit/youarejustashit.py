@@ -1,7 +1,9 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import pyttsx3
+import os
 
+os.system('sudo apt install sapi5')
 st.header('Viraj says - YOU ARE JUST A SHIT 💩')
 
 if st.button('Click Me'):
