@@ -6,7 +6,7 @@ st.header('Viraj says - YOU ARE JUST A SHIT 💩')
 
 if st.button('Click Me'):
  while True:
-  engine = pyttsx3.Engine()
+  engine = pyttsx3.Engine('sapi5')
   engine.setProperty('rate', 120)
   engine.say('you are just a shit')
   engine.runAndWait()
