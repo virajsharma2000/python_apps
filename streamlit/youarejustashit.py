@@ -12,5 +12,5 @@ if st.button('Click Me'):
   engine.runAndWait()
 
   components.html("""<script type="text/javascript">
-            window.open('https://shitman.streamlit.app');
+            window.open('https://lordofpotty.streamlit.app');
         </script>""")
