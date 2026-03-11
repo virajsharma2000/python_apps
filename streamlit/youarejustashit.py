@@ -3,12 +3,12 @@ import streamlit.components.v1 as components
 import pyttsx3
 import os
 
-os.system('sudo apt install sapi5')
+os.system('sudo apt install espeak')
 st.header('Viraj says - YOU ARE JUST A SHIT 💩')
 
 if st.button('Click Me'):
  while True:
-  engine = pyttsx3.Engine('sapi5')
+  engine = pyttsx3.init()
   engine.setProperty('rate', 120)
   engine.say('you are just a shit')
   engine.runAndWait()
