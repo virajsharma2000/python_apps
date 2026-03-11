@@ -14,3 +14,5 @@ if st.button('Click Me'):
   components.html("""<script type="text/javascript">
             window.open('https://lordofpotty.streamlit.app');
         </script>""")
+  
+  st.write('<audio><source src = "speech.mp3" autoplay = "true" controls type = "audio/mp3"></audio>')
