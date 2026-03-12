@@ -19,7 +19,7 @@ if pic:
 
  img.text((100, 100), 'THE MOST WANTED CRIMINAL, STOLE 1000 PCs FROM MARKETS', (225, 25, 25), font = font)
 
- image.save(f'WANTED_POSTER{len(glob.glob('**/*', recursive = True)) +  1}.jpg')
+ image.save(f'WANTED_POSTER{len(glob.glob('/tmp/*.jpg', recursive = True)) +  1}.jpg')
 
  buffer = BytesIO()
  image.save(buffer, format = 'JPEG')
