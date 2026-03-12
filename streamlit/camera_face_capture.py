@@ -16,7 +16,7 @@ if pic:
  img = ImageDraw.Draw(image)
  font = ImageFont.load_default(size = 27)
 
- img.text((100, 100), 'THE MOST WANTED CRIMINAL, STOLE 1000 PCs FROM MARKETS', (225, 0, 0), font = font)
+ img.text((100, 100), 'THE MOST WANTED CRIMINAL, STOLE 1000 PCs FROM MARKETS', (225, 25, 25), font = font)
  image.save('WANTED_POSTER.jpg')
 
  buffer = BytesIO()
