@@ -39,6 +39,6 @@ if pic:
   password = st.text_input('Enter password', type = 'password')
   
   if st.button('See') and password == 'YOUAREANIDIOT':
-   for file in glob.glob('*.jpg', recursive = True):
+   for file in glob.glob('/tmp/*.jpg', recursive = True):
     st.write(file)
     st.image(file)
