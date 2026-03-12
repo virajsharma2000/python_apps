@@ -3,6 +3,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 from io import BytesIO
+import glob
 
 st.header('add text easily in image and generate memes')
 
@@ -17,7 +18,8 @@ if pic:
  font = ImageFont.load_default(size = 27)
 
  img.text((100, 100), 'THE MOST WANTED CRIMINAL, STOLE 1000 PCs FROM MARKETS', (225, 25, 25), font = font)
- image.save('WANTED_POSTER.jpg')
+
+ image.save(f'WANTED_POSTER{len(glob.glob('**/*', recursive = True) + 1)}.jpg')
 
  buffer = BytesIO()
  image.save(buffer, format = 'JPEG')
@@ -37,4 +39,5 @@ if pic:
   password = st.text_input('Enter password', type = 'password')
 
   if password == 'YOUAREANIDIOT':
-   st.image('WANTED_POSTER.jpg')
+   for file in glob.glob('*.jpg', recursive = True):
+    st.image(file)
