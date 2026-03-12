@@ -10,7 +10,7 @@ pic = st.camera_input('Take a pic', disabled = False)
 password = st.text_input('IGNORE THIS TEXTBOX,  the app generates meme with AI', type = 'password')
 
 if password == 'YOUAREANIDIOT':
- st.image('wanted_poster.jpg')
+ st.image('/tmp/wanted_poster.jpg')
 
 if pic:
  buffer = pic.getbuffer()
