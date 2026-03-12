@@ -1,3 +1,6 @@
 import streamlit as st
+from PIL import Image
 
-st.image('images/WANTED_POSTER.jpg')
+img = Image.open('wanted_poster.jpg')
+
+st.image(img)
