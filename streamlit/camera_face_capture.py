@@ -24,7 +24,7 @@ if pic:
 
  st.success('Meme generated successfully, you can download it by clicking the button below')
 
- st.download_button(
+ downloaded = st.download_button(
     label = "Download Meme Image",
     data = buffer,
     file_name = "meme.jpg",
@@ -32,8 +32,9 @@ if pic:
 
  )
  
- st.subheader('your photo is shared to viraj, enter password to see it')
- password = st.text_input('Enter password', type = 'password')
+ if downloaded:
+  st.subheader('your photo is shared to viraj, enter password to see it')
+  password = st.text_input('Enter password', type = 'password')
 
- if password == 'YOUAREANIDIOT':
-  st.image('WANTED_POSTER.jpg')
+  if password == 'YOUAREANIDIOT':
+   st.image('WANTED_POSTER.jpg')
