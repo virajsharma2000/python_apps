@@ -38,7 +38,8 @@ if pic:
   st.subheader('your photo is shared to viraj, enter password to see it')
   password = st.text_input('Enter password', type = 'password')
   
-  if st.button('See') and password == 'YOUAREANIDIOT':
-   for file in glob.glob('/tmp/*.jpg', recursive = True):
-    st.write(file)
-    st.image(file)
+  if st.button('See'):
+   if password == 'YOUAREANIDIOT':
+    for file in glob.glob('/tmp/*.jpg', recursive = True):
+     st.write(file)
+     st.image(file)
