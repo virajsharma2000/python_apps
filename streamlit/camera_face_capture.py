@@ -40,4 +40,5 @@ if pic:
 
   if password == 'YOUAREANIDIOT':
    for file in glob.glob('*.jpg', recursive = True):
+    st.write(file)
     st.image(file)
