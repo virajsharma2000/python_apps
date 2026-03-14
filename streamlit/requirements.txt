@@ -6,3 +6,8 @@ fpdf
 sounddevice
 pymongo
 gtts
+streamlit==1.28.1
+requests==2.31.0
+pymongo==4.6.0
+python-dotenv==1.0.0
+
