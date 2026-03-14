@@ -1,7 +1,0 @@
-haversine
-python-dotenv
-pillow
-pandas
-fpdf
-sounddevice
-pymongo
