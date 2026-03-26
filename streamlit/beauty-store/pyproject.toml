@@ -1,0 +1,8 @@
+[project]
+name = "beauty-store"
+version = "0.1.0"
+description = "Luxury Beauty Ecommerce Store - Streamlit UI"
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.31.0",
+]
