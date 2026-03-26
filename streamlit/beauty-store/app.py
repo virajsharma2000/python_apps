@@ -680,9 +680,54 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div style="text-align:center; margin-top:2rem;">
+<div style="text-align:center; margin-top:3rem;">
     <a href="https://ai-makeup-app.streamlit.app/" target="_blank">
-        <button class="btn-primary">Chat with AI Makeup Assistant</button>
+        <button class="fancy-btn">Chat with AI Makeup Assistant</button>
     </a>
 </div>
+
+<style>
+.fancy-btn {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: #FAF8F5;
+    background: linear-gradient(135deg, #C4A484, #2D2926);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(45, 41, 38, 0.3);
+}
+
+.fancy-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    transition: all 0.7s ease;
+}
+
+.fancy-btn:hover::before {
+    top: 100%;
+    left: 100%;
+}
+
+.fancy-btn:hover {
+    background: linear-gradient(135deg, #2D2926, #C4A484);
+    box-shadow: 0 12px 25px rgba(45, 41, 38, 0.5);
+    transform: scale(1.05);
+}
+
+.fancy-btn:active {
+    transform: scale(0.95);
+}
+</style>
 """, unsafe_allow_html=True)
