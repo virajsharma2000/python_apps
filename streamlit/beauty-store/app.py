@@ -626,49 +626,49 @@ elif page == "Bag":
     if not st.session_state.cart:
         st.markdown("""
         <div class="empty-state">
-            <div class="empty-state-icon">🛍️</div>
+            <div class="empty-state-icon">🛒</div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #2D2926; margin-bottom: 0.5rem;">Your bag is empty</h3>
-            <p style="font-family: 'Inter', sans-serif; color: #5C5652;">Add items to your bag to see them here.</p>
+            <p style="font-family: 'Inter', sans-serif; color: #5C5652;">Add items you love to your bag and they'll appear here.</p>
         </div>
         """, unsafe_allow_html=True)
     else:
-        total = 0
-        for idx, product_id in enumerate(st.session_state.cart):
-            product = get_product_by_id(product_id)
-            if product:
-                total += product['price']
-                
-                col1, col2, col3, col4 = st.columns([1, 3, 1, 1])
-                with col1:
-                    st.image(product['image'], width=80)
-                with col2:
-                    st.markdown(f"""
-                    <p class="product-brand">{product['brand']}</p>
-                    <p class="product-name">{product['name']}</p>
-                    """, unsafe_allow_html=True)
-                with col3:
-                    st.markdown(f"<p class='product-price'>${product['price']:.2f}</p>", unsafe_allow_html=True)
-                with col4:
-                    if st.button("Remove", key=f"cart_remove_{idx}"):
-                        st.session_state.cart.pop(idx)
-                        st.rerun()
-                
-                st.markdown("<hr style='border: none; border-top: 1px solid #E8E4DE; margin: 1rem 0;'>", unsafe_allow_html=True)
+        total = sum(get_product_by_id(pid)['price'] for pid in st.session_state.cart)
+        st.markdown(f"<p style='font-family: Inter, sans-serif; font-size: 1rem; color: #2D2926;'>Total: ${total:.2f}</p>", unsafe_allow_html=True)
         
-        # Order summary
-        st.markdown("<br>", unsafe_allow_html=True)
-        col1, col2 = st.columns([2, 1])
-        with col2:
-            st.markdown(f"""
-            <div class="stat-card">
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #5C5652; margin-bottom: 0.5rem;">Subtotal</p>
-                <p style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #2D2926; margin-bottom: 0.5rem;">${total:.2f}</p>
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #5C5652;">Shipping calculated at checkout</p>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            if st.button("Proceed to Checkout", use_container_width=True):
-                st.toast("Checkout functionality coming soon!")
+        # Razorpay Checkout modal
+        razorpay_html = f"""
+        <div style="margin-top: 1rem;">
+            <button id="rzp-button" style="
+                background-color:#2D2926;color:#FAF8F5;
+                padding:0.75rem 2rem;border:none;border-radius:4px;
+                font-family:'Inter',sans-serif;font-weight:500;
+                cursor:pointer;
+            ">Checkout</button>
+        </div>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {{
+                "key": "rzp_test_yourkeyhere", // Replace with your Razorpay key
+                "amount": {int(total*100)}, // amount in paise
+                "currency": "INR",
+                "name": "Lumière Beauty",
+                "description": "Shopping Bag Payment",
+                "handler": function(response){{
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                }},
+                "theme": {{
+                    "color": "#C4A484"
+                }}
+            }};
+            var rzp = new Razorpay(options);
+            document.getElementById('rzp-button').onclick = function(e){{
+                rzp.open();
+                e.preventDefault();
+            }}
+        </script>
+        """
+        import streamlit.components.v1 as components
+        components.html(razorpay_html, height=120)
 
 # Footer
 st.markdown("<br><br>", unsafe_allow_html=True)
