@@ -1412,7 +1412,7 @@ if user_input:
                             "content": naming_prompt
                         }
                     ],
-                    "model": "sarvam-m"
+                    "model": "sarvam-105b-conversations"
                 },
                 timeout=10
             )
@@ -1497,7 +1497,7 @@ Then suggest relevant products from the catalogue that match their interests and
                             "content": prompt
                         }
                     ],
-                    "model": "sarvam-m"
+                    "model": "sarvam-105b-conversations"
                 },
                 timeout=30
             )
